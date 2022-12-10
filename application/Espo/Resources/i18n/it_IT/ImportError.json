@@ -1,0 +1,16 @@
+{
+  "fields": {
+    "type": "Tipo",
+    "import": "Importa",
+    "lineNumber": "Linea Numero",
+    "exportLineNumber": "Numero della linea di esportazione",
+    "row": "Riga"
+  },
+  "options": {
+    "type": {
+      "Validation": "Convalida",
+      "Access": "Accesso",
+      "Not-Found": "Non Trovato"
+    }
+  }
+}
