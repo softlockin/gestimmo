@@ -7475,7 +7475,7 @@ return [
       ],
       'outboundEmailFromName' => [
         'type' => 'varchar',
-        'default' => 'EspoCRM',
+        'default' => 'GESTIMMO',
         'fieldType' => 'varchar',
         'len' => 255
       ],

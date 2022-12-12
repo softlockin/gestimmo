@@ -97,7 +97,7 @@ define('controllers/base', ['controller'], function (Dep) {
          * Log out.
          */
         logout: function () {
-            var title = this.getConfig().get('applicationName') || 'EspoCRM';
+            var title = this.getConfig().get('applicationName') || 'GESTIMMO';
             $('head title').text(title);
 
             this.trigger('logout');

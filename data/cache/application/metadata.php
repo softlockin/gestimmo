@@ -13287,7 +13287,7 @@ return [
         ],
         'outboundEmailFromName' => [
           'type' => 'varchar',
-          'default' => 'EspoCRM',
+          'default' => 'GESTIMMO',
           'trim' => true
         ],
         'outboundEmailFromAddress' => [

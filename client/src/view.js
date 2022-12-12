@@ -289,7 +289,7 @@ define('view', [], function () {
          * Update a page title. Supposed to be overridden if needed.
          */
         updatePageTitle: function () {
-            var title = this.getConfig().get('applicationName') || 'EspoCRM';
+            var title = this.getConfig().get('applicationName') || 'GESTIMMO';
 
             this.setPageTitle(title);
         },

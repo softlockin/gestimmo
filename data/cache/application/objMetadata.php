@@ -13287,7 +13287,7 @@ return (object) [
         ],
         'outboundEmailFromName' => (object) [
           'type' => 'varchar',
-          'default' => 'EspoCRM',
+          'default' => 'GESTIMMO',
           'trim' => true
         ],
         'outboundEmailFromAddress' => (object) [
