@@ -785,29 +785,6 @@ return (object) [
           ]
         ],
         'order' => 26
-      ],
-      'realEstate' => (object) [
-        'label' => 'Real Estate',
-        'items' => [
-          0 => (object) [
-            'url' => '#RealEstateRequest/settings',
-            'label' => 'Settings',
-            'description' => 'realEstateSettings',
-            'iconClass' => 'fas fa-cog'
-          ],
-          1 => (object) [
-            'url' => '#RealEstateLocation',
-            'label' => 'Locations',
-            'description' => 'realEstateLocations',
-            'iconClass' => 'fas fa-map-marked-alt'
-          ],
-          2 => (object) [
-            'url' => '#RealEstateRequest/matchingConfiguration',
-            'label' => 'Property Matching',
-            'description' => 'propertyMatching',
-            'iconClass' => 'fas fa-equals'
-          ]
-        ]
       ]
     ],
     'appParams' => (object) [
@@ -1600,33 +1577,29 @@ return (object) [
         0 => (object) [
           'name' => 'My Espo',
           'layout' => [
-            0 => [
-              0 => (object) [
-                'name' => 'Stream',
-                'id' => 'defaultStream'
-              ],
-              1 => (object) [
-                'name' => 'Opportunities',
-                'id' => 'defaultOpportunities'
-              ],
-              2 => (object) [
-                'name' => 'Activities',
-                'id' => 'defailtActivities'
-              ]
+            0 => (object) [
+              'id' => 'defaultActivities',
+              'name' => 'Activities',
+              'x' => 2,
+              'y' => 2,
+              'width' => 2,
+              'height' => 2
             ],
-            1 => [
-              0 => (object) [
-                'name' => 'Properties',
-                'id' => 'defaultProperties'
-              ],
-              1 => (object) [
-                'name' => 'Requests',
-                'id' => 'defaultRequests'
-              ],
-              2 => (object) [
-                'name' => 'Tasks',
-                'id' => 'defaultTasks'
-              ]
+            1 => (object) [
+              'id' => 'defaultStream',
+              'name' => 'Stream',
+              'x' => 0,
+              'y' => 0,
+              'width' => 2,
+              'height' => 4
+            ],
+            2 => (object) [
+              'id' => 'defaultTasks',
+              'name' => 'Tasks',
+              'x' => 2,
+              'y' => 4,
+              'width' => 2,
+              'height' => 2
             ]
           ]
         ]
@@ -1635,8 +1608,7 @@ return (object) [
     'defaultDashboardOptions' => (object) [
       'Standard' => (object) [
         'defaultStream' => (object) [
-          'displayRecords' => 5,
-          'isDoubleHeight' => false
+          'displayRecords' => 10
         ]
       ]
     ],
@@ -6099,9 +6071,6 @@ return (object) [
           'rowActionsView' => 'crm:views/record/row-actions/relationship-target',
           'layout' => 'listForTarget',
           'view' => 'crm:views/record/panels/target-lists'
-        ],
-        'properties' => (object) [
-          'layout' => 'listForContact'
         ]
       ],
       'boolFilterList' => [
@@ -6811,12 +6780,6 @@ return (object) [
         ],
         'listForContact' => (object) [
           'type' => 'listSmall'
-        ],
-        'listForProperty' => (object) [
-          'type' => 'listSmall'
-        ],
-        'listForRequest' => (object) [
-          'type' => 'listSmall'
         ]
       ],
       'kanbanViewMode' => true,
@@ -7048,288 +7011,6 @@ return (object) [
       ],
       'iconClass' => 'fas fa-tasks',
       'kanbanViewMode' => true
-    ],
-    'RealEstateLocation' => (object) [
-      'controller' => 'controllers/record-tree',
-      'collection' => 'collections/tree',
-      'menu' => (object) [
-        'listTree' => (object) [
-          'buttons' => [
-            0 => (object) [
-              'label' => 'List View',
-              'link' => '#RealEstateLocation/list',
-              'acl' => 'read',
-              'style' => 'default'
-            ]
-          ]
-        ],
-        'list' => (object) [
-          'buttons' => [
-            0 => (object) [
-              'label' => 'Tree View',
-              'link' => '#RealEstateLocation',
-              'acl' => 'read',
-              'style' => 'default'
-            ]
-          ]
-        ]
-      ],
-      'recordViews' => (object) [
-        'listTree' => 'real-estate:views/real-estate-location/record/list-tree'
-      ]
-    ],
-    'RealEstateProperty' => (object) [
-      'controller' => 'real-estate:controllers/real-estate-property',
-      'dynamicHandler' => 'real-estate:property-dynamic-handler',
-      'boolFilterList' => [
-        0 => 'onlyMy'
-      ],
-      'filterList' => [
-        0 => 'actual',
-        1 => 'actualSale',
-        2 => 'actualRent',
-        3 => (object) [
-          'name' => 'completed',
-          'style' => 'success'
-        ]
-      ],
-      'menu' => (object) [
-        'list' => (object) [
-          'dropdown' => [
-            0 => (object) [
-              'link' => '#RealEstateLocation',
-              'aclScope' => 'RealEstateLocation',
-              'acl' => 'read',
-              'label' => 'Locations'
-            ]
-          ]
-        ]
-      ],
-      'recordViews' => (object) [
-        'detail' => 'real-estate:views/real-estate-property/record/detail'
-      ],
-      'views' => (object) [
-        'detail' => 'real-estate:views/real-estate-property/detail'
-      ],
-      'sidePanels' => (object) [
-        'detail' => [
-          0 => (object) [
-            'name' => 'activities',
-            'label' => 'Activities',
-            'view' => 'crm:views/record/panels/activities'
-          ],
-          1 => (object) [
-            'name' => 'history',
-            'label' => 'History',
-            'view' => 'crm:views/record/panels/history'
-          ],
-          2 => (object) [
-            'name' => 'tasks',
-            'label' => 'Tasks',
-            'view' => 'crm:views/record/panels/tasks'
-          ]
-        ]
-      ],
-      'bottomPanels' => (object) [
-        'detail' => [
-          0 => (object) [
-            'name' => 'matchingRequests',
-            'label' => 'Matching Requests',
-            'view' => 'real-estate:views/real-estate-property/record/panels/matching-requests',
-            'create' => false,
-            'select' => false,
-            'rowActionsView' => 'real-estate:views/real-estate-property/record/row-actions/matching-requests',
-            'layout' => 'listForProperty',
-            'actionList' => [
-              0 => (object) [
-                'name' => 'listMatching',
-                'label' => 'List',
-                'action' => 'listMatching'
-              ]
-            ],
-            'order' => 4
-          ]
-        ]
-      ],
-      'relationshipPanels' => (object) [
-        'opportunities' => (object) [
-          'layout' => 'listForProperty',
-          'rowActionsView' => 'views/record/row-actions/relationship-no-unlink',
-          'view' => 'real-estate:views/real-estate-request/record/panels/opportunities',
-          'select' => false
-        ]
-      ],
-      'dynamicLogic' => (object) [
-        'fields' => (object) [
-          'matchingRequestCount' => (object) [
-            'visible' => (object) [
-              'conditionGroup' => [
-                0 => (object) [
-                  'type' => 'notIn',
-                  'attribute' => 'status',
-                  'value' => [
-                    0 => 'Completed',
-                    1 => 'Canceled',
-                    2 => 'Lost'
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ],
-        'panels' => (object) [
-          'matchingRequests' => (object) [
-            'visible' => (object) [
-              'conditionGroup' => [
-                0 => (object) [
-                  'type' => 'notIn',
-                  'attribute' => 'status',
-                  'value' => [
-                    0 => 'Completed',
-                    1 => 'Canceled',
-                    2 => 'Lost'
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      'additionalLayouts' => (object) [
-        'listForRequest' => (object) [
-          'type' => 'list'
-        ],
-        'listForContact' => (object) [
-          'type' => 'list'
-        ]
-      ],
-      'iconClass' => 'far fa-building',
-      'color' => '#aea7d4'
-    ],
-    'RealEstateRequest' => (object) [
-      'controller' => 'real-estate:controllers/real-estate-request',
-      'dynamicHandler' => 'real-estate:request-dynamic-handler',
-      'boolFilterList' => [
-        0 => 'onlyMy'
-      ],
-      'filterList' => [
-        0 => 'actual',
-        1 => 'actualSale',
-        2 => 'actualRent',
-        3 => (object) [
-          'name' => 'completed',
-          'style' => 'success'
-        ]
-      ],
-      'recordViews' => (object) [
-        'detail' => 'real-estate:views/real-estate-request/record/detail'
-      ],
-      'views' => (object) [
-        'detail' => 'real-estate:views/real-estate-request/detail'
-      ],
-      'menu' => (object) [
-        'list' => (object) [
-          'dropdown' => [
-            0 => (object) [
-              'link' => '#RealEstateLocation',
-              'aclScope' => 'RealEstateLocation',
-              'acl' => 'read',
-              'label' => 'Locations'
-            ]
-          ]
-        ]
-      ],
-      'sidePanels' => (object) [
-        'detail' => [
-          0 => (object) [
-            'name' => 'activities',
-            'label' => 'Activities',
-            'view' => 'crm:views/record/panels/activities'
-          ],
-          1 => (object) [
-            'name' => 'history',
-            'label' => 'History',
-            'view' => 'crm:views/record/panels/history'
-          ],
-          2 => (object) [
-            'name' => 'tasks',
-            'label' => 'Tasks',
-            'view' => 'crm:views/record/panels/tasks'
-          ]
-        ]
-      ],
-      'bottomPanels' => (object) [
-        'detail' => [
-          0 => (object) [
-            'name' => 'matchingProperties',
-            'label' => 'Matching Properties',
-            'view' => 'real-estate:views/real-estate-request/record/panels/matching-properties',
-            'create' => false,
-            'select' => false,
-            'rowActionsView' => 'real-estate:views/real-estate-request/record/row-actions/matching-properties',
-            'layout' => 'listForRequest',
-            'actionList' => [
-              0 => (object) [
-                'name' => 'listMatching',
-                'label' => 'List',
-                'action' => 'listMatching'
-              ]
-            ],
-            'order' => 4
-          ]
-        ]
-      ],
-      'relationshipPanels' => (object) [
-        'opportunities' => (object) [
-          'layout' => 'listForRequest',
-          'view' => 'real-estate:views/real-estate-request/record/panels/opportunities',
-          'rowActionsView' => 'views/record/row-actions/relationship-no-unlink',
-          'select' => false
-        ]
-      ],
-      'dynamicLogic' => (object) [
-        'fields' => (object) [
-          'matchingPropertyCount' => (object) [
-            'visible' => (object) [
-              'conditionGroup' => [
-                0 => (object) [
-                  'type' => 'notIn',
-                  'attribute' => 'status',
-                  'value' => [
-                    0 => 'Completed',
-                    1 => 'Canceled',
-                    2 => 'Lost'
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ],
-        'panels' => (object) [
-          'matchingProperties' => (object) [
-            'visible' => (object) [
-              'conditionGroup' => [
-                0 => (object) [
-                  'type' => 'notIn',
-                  'attribute' => 'status',
-                  'value' => [
-                    0 => 'Completed',
-                    1 => 'Canceled',
-                    2 => 'Lost'
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      'additionalLayouts' => (object) [
-        'listForProperty' => (object) [
-          'type' => 'list'
-        ]
-      ],
-      'iconClass' => 'far fa-dot-circle',
-      'color' => '#eaa0a0'
     ]
   ],
   'dashlets' => (object) [
@@ -8750,14 +8431,6 @@ return (object) [
           'inPortalDisabled' => true
         ]
       ]
-    ],
-    'Properties' => (object) [
-      'view' => 'real-estate:views/dashlets/properties',
-      'aclScope' => 'RealEstateProperty'
-    ],
-    'Requests' => (object) [
-      'view' => 'real-estate:views/dashlets/requests',
-      'aclScope' => 'RealEstateRequest'
     ]
   ],
   'entityAcl' => (object) [
@@ -9843,13 +9516,11 @@ return (object) [
             3 => 'tooltipText'
           ],
           'entityList' => [
-            0 => 'RealEstateProperty',
-            1 => 'RealEstateRequest',
-            2 => 'Opportunity',
-            3 => 'Contact',
-            4 => 'Account',
-            5 => 'Lead',
-            6 => 'Case'
+            0 => 'Account',
+            1 => 'Lead',
+            2 => 'Contact',
+            3 => 'Opportunity',
+            4 => 'Case'
           ]
         ],
         'dateSent' => (object) [
@@ -12170,32 +11841,11 @@ return (object) [
         ],
         'Opportunity' => (object) [
           'Proposal' => 'primary',
-          'Negotiation' => 'primary',
-          'Prospecting' => 'primary',
-          'Proposed' => 'primary',
-          'Presented' => 'primary',
-          'Closed Won' => 'success',
-          'Closed Lost' => 'danger'
+          'Negotiation' => 'primary'
         ],
         'Task' => (object) [
           'Started' => 'primary',
           'Canceled' => 'danger'
-        ],
-        'RealEstateProperty' => (object) [
-          'New' => 'primary',
-          'Assigned' => 'primary',
-          'In Process' => 'primary',
-          'Completed' => 'success',
-          'Canceled' => 'danger',
-          'Lost' => 'danger'
-        ],
-        'RealEstateRequest' => (object) [
-          'New' => 'primary',
-          'Assigned' => 'primary',
-          'In Process' => 'primary',
-          'Completed' => 'success',
-          'Canceled' => 'danger',
-          'Lost' => 'danger'
         ]
       ],
       'indexes' => (object) [
@@ -12227,22 +11877,6 @@ return (object) [
             1 => 'number'
           ]
         ]
-      ],
-      'streamRelated' => (object) [
-        'RealEstateProperty' => [
-          0 => 'meetings',
-          1 => 'calls',
-          2 => 'tasks'
-        ],
-        'RealEstateRequest' => [
-          0 => 'meetings',
-          1 => 'calls',
-          2 => 'tasks'
-        ]
-      ],
-      'statusFields' => (object) [
-        'RealEstateProperty' => 'status',
-        'RealEstateRequest' => 'status'
       ]
     ],
     'Notification' => (object) [
@@ -13059,9 +12693,7 @@ return (object) [
         'SendEmailNotifications' => '*/2 * * * *',
         'ProcessWebhookQueue' => '*/5 * * * *',
         'ProcessMassEmail' => '15 * * * *',
-        'ControlKnowledgeBaseArticleStatus' => '10 1 * * *',
-        'PropertyMatchingUpdate' => '55 */2 * * *',
-        'SendPropertyMatches' => '*/2 * * * *'
+        'ControlKnowledgeBaseArticleStatus' => '10 1 * * *'
       ],
       'jobs' => (object) [
         'SubmitPopupReminders' => (object) [
@@ -13655,7 +13287,7 @@ return (object) [
         ],
         'outboundEmailFromName' => (object) [
           'type' => 'varchar',
-          'default' => 'GestImmo',
+          'default' => 'EspoCRM',
           'trim' => true
         ],
         'outboundEmailFromAddress' => (object) [
@@ -14251,24 +13883,6 @@ return (object) [
         'smsProvider' => (object) [
           'type' => 'enum',
           'view' => 'views/settings/fields/sms-provider'
-        ],
-        'saleMarkup' => (object) [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'rentMarkup' => (object) [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'realEstateEmailSending' => (object) [
-          'type' => 'bool'
-        ],
-        'realEstateEmailSendingAssignedUserCc' => (object) [
-          'type' => 'bool'
-        ],
-        'realEstatePropertyTemplate' => (object) [
-          'type' => 'link',
-          'entity' => 'EmailTemplate'
         ],
         'addressPreviewStreet' => (object) [
           'notStorable' => true,
@@ -16101,11 +15715,6 @@ return (object) [
           'type' => 'hasOne',
           'entity' => 'Lead',
           'foreign' => 'createdAccount'
-        ],
-        'properties' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'account',
-          'entity' => 'RealEstateProperty'
         ]
       ],
       'collection' => (object) [
@@ -16226,13 +15835,11 @@ return (object) [
         'parent' => (object) [
           'type' => 'linkParent',
           'entityList' => [
-            0 => 'RealEstateProperty',
-            1 => 'RealEstateRequest',
-            2 => 'Opportunity',
-            3 => 'Contact',
-            4 => 'Account',
-            5 => 'Lead',
-            6 => 'Case'
+            0 => 'Account',
+            1 => 'Lead',
+            2 => 'Contact',
+            3 => 'Opportunity',
+            4 => 'Case'
           ]
         ],
         'account' => (object) [
@@ -17819,10 +17426,9 @@ return (object) [
           'notStorable' => true,
           'options' => [
             0 => '',
-            1 => 'Landlord',
-            2 => 'Tenant',
-            3 => 'Property Manager',
-            4 => 'Requester'
+            1 => 'Decision Maker',
+            2 => 'Evaluator',
+            3 => 'Influencer'
           ],
           'layoutMassUpdateDisabled' => true,
           'layoutListDisabled' => true,
@@ -17920,8 +17526,7 @@ return (object) [
               ]
             ]
           ],
-          'view' => 'crm:views/contact/fields/opportunity-role',
-          'default' => ''
+          'view' => 'crm:views/contact/fields/opportunity-role'
         ],
         'acceptanceStatus' => (object) [
           'type' => 'varchar',
@@ -18090,18 +17695,6 @@ return (object) [
           'notStorable' => true,
           'readOnly' => true,
           'disabled' => true
-        ],
-        'propertyRole' => (object) [
-          'type' => 'enum',
-          'notStorable' => true,
-          'disabled' => true,
-          'default' => '',
-          'options' => [
-            0 => '',
-            1 => 'Landlord',
-            2 => 'Tenant',
-            3 => 'Property Manager'
-          ]
         ],
         'middleName' => (object) [
           'type' => 'varchar',
@@ -18281,29 +17874,6 @@ return (object) [
           'entity' => 'Task',
           'foreign' => 'contact',
           'layoutRelationshipsDisabled' => true
-        ],
-        'properties' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'contacts',
-          'entity' => 'RealEstateProperty',
-          'selectParams' => (object) [
-            'additionalColumns' => (object) [
-              'role' => 'contactRole'
-            ]
-          ],
-          'columnAttributeMap' => (object) [
-            'role' => 'propertyRole'
-          ]
-        ],
-        'requestsPrimary' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'contact',
-          'entity' => 'RealEstateRequest'
-        ],
-        'requests' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'contacts',
-          'entity' => 'RealEstateRequest'
         ]
       ],
       'collection' => (object) [
@@ -18505,12 +18075,6 @@ return (object) [
           'type' => 'belongsTo',
           'foreign' => 'documents',
           'entity' => 'DocumentFolder'
-        ],
-        'properties' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'documents',
-          'entity' => 'RealEstateProperty',
-          'isCustom' => true
         ]
       ],
       'collection' => (object) [
@@ -19675,13 +19239,11 @@ return (object) [
         'parent' => (object) [
           'type' => 'linkParent',
           'entityList' => [
-            0 => 'RealEstateProperty',
-            1 => 'RealEstateRequest',
-            2 => 'Opportunity',
-            3 => 'Contact',
-            4 => 'Account',
-            5 => 'Lead',
-            6 => 'Case'
+            0 => 'Account',
+            1 => 'Lead',
+            2 => 'Contact',
+            3 => 'Opportunity',
+            4 => 'Case'
           ]
         ],
         'account' => (object) [
@@ -20089,7 +19651,7 @@ return (object) [
       'fields' => (object) [
         'name' => (object) [
           'type' => 'varchar',
-          'required' => false,
+          'required' => true,
           'trim' => true,
           'pattern' => '$noBadCharacters'
         ],
@@ -20278,23 +19840,22 @@ return (object) [
           'type' => 'enum',
           'options' => [
             0 => 'Prospecting',
-            1 => 'Proposed',
-            2 => 'Presented',
-            3 => 'Closed Won',
-            4 => 'Closed Lost'
+            1 => 'Qualification',
+            2 => 'Proposal',
+            3 => 'Negotiation',
+            4 => 'Closed Won',
+            5 => 'Closed Lost'
           ],
           'view' => 'crm:views/opportunity/fields/stage',
           'default' => 'Prospecting',
           'audited' => true,
           'probabilityMap' => (object) [
-            'Prospecting' => 5,
+            'Prospecting' => 10,
             'Qualification' => 20,
             'Proposal' => 50,
             'Negotiation' => 80,
             'Closed Won' => 100,
-            'Closed Lost' => 0,
-            'Proposed' => 10,
-            'Presented' => 30
+            'Closed Lost' => 0
           ],
           'style' => (object) [
             'Closed Won' => 'success',
@@ -20328,7 +19889,7 @@ return (object) [
         ],
         'closeDate' => (object) [
           'type' => 'date',
-          'required' => false,
+          'required' => true,
           'audited' => true
         ],
         'description' => (object) [
@@ -20473,12 +20034,6 @@ return (object) [
           'type' => 'linkMultiple',
           'view' => 'views/fields/teams'
         ],
-        'property' => (object) [
-          'type' => 'link'
-        ],
-        'request' => (object) [
-          'type' => 'link'
-        ],
         'amountCurrency' => (object) [
           'type' => 'enum',
           'view' => 'views/fields/currency-list',
@@ -20581,16 +20136,6 @@ return (object) [
           'type' => 'hasOne',
           'entity' => 'Lead',
           'foreign' => 'createdOpportunity'
-        ],
-        'property' => (object) [
-          'type' => 'belongsTo',
-          'foreign' => 'opportunities',
-          'entity' => 'RealEstateProperty'
-        ],
-        'request' => (object) [
-          'type' => 'belongsTo',
-          'foreign' => 'opportunities',
-          'entity' => 'RealEstateRequest'
         ]
       ],
       'collection' => (object) [
@@ -21225,13 +20770,11 @@ return (object) [
         'parent' => (object) [
           'type' => 'linkParent',
           'entityList' => [
-            0 => 'RealEstateProperty',
-            1 => 'RealEstateRequest',
-            2 => 'Opportunity',
-            3 => 'Contact',
-            4 => 'Account',
-            5 => 'Lead',
-            6 => 'Case'
+            0 => 'Account',
+            1 => 'Contact',
+            2 => 'Lead',
+            3 => 'Opportunity',
+            4 => 'Case'
           ]
         ],
         'account' => (object) [
@@ -21364,964 +20907,6 @@ return (object) [
             0 => 'assignedUserId',
             1 => 'status'
           ]
-        ]
-      ]
-    ],
-    'RealEstateLocation' => (object) [
-      'fields' => (object) [
-        'name' => (object) [
-          'type' => 'varchar',
-          'required' => true
-        ],
-        'description' => (object) [
-          'type' => 'text'
-        ],
-        'createdAt' => (object) [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'modifiedAt' => (object) [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'createdBy' => (object) [
-          'type' => 'link',
-          'readOnly' => true
-        ],
-        'modifiedBy' => (object) [
-          'type' => 'link',
-          'readOnly' => true
-        ],
-        'teams' => (object) [
-          'type' => 'linkMultiple'
-        ],
-        'parent' => (object) [
-          'type' => 'link'
-        ],
-        'childList' => (object) [
-          'type' => 'jsonArray',
-          'notStorable' => true
-        ],
-        'address' => (object) [
-          'type' => 'address',
-          'tooltip' => true
-        ],
-        'addressStreet' => (object) [
-          'type' => 'text',
-          'maxLength' => 255,
-          'dbType' => 'varchar'
-        ],
-        'addressCity' => (object) [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-city',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressState' => (object) [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-state',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressCountry' => (object) [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-country',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressPostalCode' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 40,
-          'trim' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressMap' => (object) [
-          'type' => 'map',
-          'notStorable' => true,
-          'readOnly' => true,
-          'layoutListDisabled' => true,
-          'provider' => 'Google',
-          'height' => 300,
-          'exportDisabled' => true,
-          'importDisabled' => true
-        ]
-      ],
-      'links' => (object) [
-        'createdBy' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'modifiedBy' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'teams' => (object) [
-          'type' => 'hasMany',
-          'entity' => 'Team',
-          'relationName' => 'entityTeam',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'parent' => (object) [
-          'type' => 'belongsTo',
-          'foreign' => 'children',
-          'entity' => 'RealEstateLocation'
-        ],
-        'children' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'parent',
-          'entity' => 'RealEstateLocation'
-        ],
-        'properties' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'location',
-          'entity' => 'RealEstateProperty'
-        ],
-        'requests' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'locations',
-          'entity' => 'RealEstateRequest'
-        ],
-        'locations' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'properties',
-          'entity' => 'RealEstateProperty'
-        ]
-      ],
-      'collection' => (object) [
-        'sortBy' => 'parent',
-        'asc' => true,
-        'orderBy' => 'parent',
-        'order' => 'asc'
-      ],
-      'additionalTables' => (object) [
-        'RealEstateLocationPath' => (object) [
-          'fields' => (object) [
-            'id' => (object) [
-              'type' => 'id',
-              'dbType' => 'int',
-              'len' => '11',
-              'autoincrement' => true,
-              'unique' => true
-            ],
-            'ascendorId' => (object) [
-              'type' => 'varchar',
-              'len' => '100',
-              'index' => true
-            ],
-            'descendorId' => (object) [
-              'type' => 'varchar',
-              'len' => '24',
-              'index' => true
-            ]
-          ]
-        ]
-      ]
-    ],
-    'RealEstateProperty' => (object) [
-      'fields' => (object) [
-        'name' => (object) [
-          'type' => 'varchar',
-          'readOnly' => true,
-          'view' => 'real-estate:views/real-estate-property/fields/name',
-          'matchingDisabled' => true
-        ],
-        'description' => (object) [
-          'type' => 'text'
-        ],
-        'createdAt' => (object) [
-          'type' => 'datetime',
-          'readOnly' => true,
-          'matchingDisabled' => true
-        ],
-        'modifiedAt' => (object) [
-          'type' => 'datetime',
-          'readOnly' => true,
-          'matchingDisabled' => true
-        ],
-        'createdBy' => (object) [
-          'type' => 'link',
-          'readOnly' => true,
-          'matchingDisabled' => true
-        ],
-        'modifiedBy' => (object) [
-          'type' => 'link',
-          'readOnly' => true,
-          'matchingDisabled' => true
-        ],
-        'assignedUser' => (object) [
-          'type' => 'link',
-          'required' => false
-        ],
-        'teams' => (object) [
-          'type' => 'linkMultiple'
-        ],
-        'type' => (object) [
-          'type' => 'enum',
-          'options' => [
-            0 => 'Apartment',
-            1 => 'Separate House',
-            2 => 'Room',
-            3 => 'Land Lot',
-            4 => 'Office',
-            5 => 'Warehouse',
-            6 => 'Retail',
-            7 => 'Farm'
-          ],
-          'isSorted' => false,
-          'default' => 'Apartment',
-          'matchingDisabled' => true
-        ],
-        'address' => (object) [
-          'type' => 'address'
-        ],
-        'addressMap' => (object) [
-          'type' => 'map',
-          'notStorable' => true,
-          'readOnly' => true,
-          'layoutListDisabled' => true,
-          'provider' => 'Google',
-          'height' => 300,
-          'exportDisabled' => true,
-          'importDisabled' => true,
-          'view' => 'real-estate:views/real-estate-property/fields/address-map',
-          'layoutSearchDisabled' => true,
-          'layoutMassUpdateDisabled' => true
-        ],
-        'status' => (object) [
-          'type' => 'enum',
-          'options' => [
-            0 => 'New',
-            1 => 'Assigned',
-            2 => 'In Process',
-            3 => 'Completed',
-            4 => 'Canceled',
-            5 => 'Lost'
-          ],
-          'default' => 'New',
-          'isSorted' => false,
-          'view' => 'views/fields/enum-styled',
-          'style' => (object) [
-            'Completed' => 'success',
-            'Lost' => 'danger',
-            'Canceled' => 'danger'
-          ],
-          'matchingDisabled' => true
-        ],
-        'number' => (object) [
-          'type' => 'autoincrement',
-          'autoincrement' => true,
-          'unique' => true,
-          'matchingDisabled' => true
-        ],
-        'location' => (object) [
-          'type' => 'link',
-          'view' => 'real-estate:views/real-estate-property/fields/location',
-          'matchingDisabled' => true
-        ],
-        'images' => (object) [
-          'type' => 'attachmentMultiple',
-          'required' => false,
-          'layoutListDisabled' => true
-        ],
-        'contacts' => (object) [
-          'type' => 'linkMultiple',
-          'view' => 'real-estate:views/real-estate-property/fields/contacts',
-          'columns' => (object) [
-            'role' => 'propertyRole'
-          ],
-          'additionalAttributeList' => [
-            0 => 'columns'
-          ]
-        ],
-        'contactRole' => (object) [
-          'view' => 'real-estate:views/real-estate-property/fields/contact-role',
-          'type' => 'enum',
-          'notStorable' => true,
-          'layoutMassDetailDisabled' => true,
-          'layoutMassUpdateDisabled' => true,
-          'layoutMassFiltersDisabled' => true,
-          'customizationOptionsDisabled' => true,
-          'layoutAvailabilityList' => [
-            0 => 'listForContact'
-          ],
-          'translation' => 'Contact.options.propertyRole'
-        ],
-        'account' => (object) [
-          'type' => 'link',
-          'matchingDisabled' => true
-        ],
-        'requestType' => (object) [
-          'type' => 'enum',
-          'required' => false,
-          'default' => 'Rent',
-          'view' => 'real-estate:views/real-estate-property/fields/request-type',
-          'customizationOptionsDisabled' => true,
-          'isSorted' => false,
-          'matchingDisabled' => true
-        ],
-        'price' => (object) [
-          'type' => 'currency',
-          'required' => false,
-          'matchingDisabled' => true
-        ],
-        'square' => (object) [
-          'notNull' => false,
-          'type' => 'float',
-          'required' => false,
-          'min' => 0,
-          'isMatching' => true
-        ],
-        'yearBuilt' => (object) [
-          'type' => 'int',
-          'required' => false,
-          'min' => 0,
-          'max' => 2100,
-          'disableFormatting' => true,
-          'isMatching' => true
-        ],
-        'bedroomCount' => (object) [
-          'type' => 'int',
-          'required' => false,
-          'min' => 0,
-          'isMatching' => true
-        ],
-        'bathroomCount' => (object) [
-          'type' => 'int',
-          'required' => false,
-          'min' => 0,
-          'isMatching' => true
-        ],
-        'floor' => (object) [
-          'type' => 'int',
-          'required' => false,
-          'isMatching' => true
-        ],
-        'floorCount' => (object) [
-          'type' => 'int',
-          'required' => false,
-          'min' => 0,
-          'default' => 1,
-          'isMatching' => true
-        ],
-        'matchingRequest' => (object) [
-          'type' => 'link',
-          'entity' => 'RealEstateRequest',
-          'notStorable' => true,
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'view' => 'real-estate:views/real-estate-property/fields/matching-request',
-          'matchingDisabled' => true
-        ],
-        'interestDegree' => (object) [
-          'type' => 'int',
-          'notStorable' => true,
-          'disabled' => true,
-          'matchingDisabled' => true
-        ],
-        'matchingRequestCount' => (object) [
-          'type' => 'int',
-          'readOnly' => true,
-          'matchingDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationMinDisabled' => true,
-          'customizationMaxDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationDefaultDisabled' => true
-        ],
-        'addressStreet' => (object) [
-          'type' => 'text',
-          'maxLength' => 255,
-          'dbType' => 'varchar'
-        ],
-        'addressCity' => (object) [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-city',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressState' => (object) [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-state',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressCountry' => (object) [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-country',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressPostalCode' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 40,
-          'trim' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'priceCurrency' => (object) [
-          'type' => 'enum',
-          'view' => 'views/fields/currency-list',
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'layoutMassUpdateDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationOptionsDisabled' => true,
-          'customizationIsSortedDisabled' => true,
-          'customizationDisplayAsLabelDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
-          'maxLength' => 6
-        ],
-        'priceConverted' => (object) [
-          'type' => 'currencyConverted',
-          'readOnly' => true,
-          'importDisabled' => true
-        ]
-      ],
-      'links' => (object) [
-        'createdBy' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'modifiedBy' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'assignedUser' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'teams' => (object) [
-          'type' => 'hasMany',
-          'entity' => 'Team',
-          'relationName' => 'EntityTeam',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'images' => (object) [
-          'type' => 'hasChildren',
-          'entity' => 'Attachment',
-          'foreign' => 'parent',
-          'layoutRelationshipsDisabled' => true,
-          'relationName' => 'attachments'
-        ],
-        'contacts' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'properties',
-          'entity' => 'Contact',
-          'additionalColumns' => (object) [
-            'role' => (object) [
-              'type' => 'varchar',
-              'len' => 50
-            ]
-          ],
-          'columnAttributeMap' => (object) [
-            'role' => 'contactRole'
-          ]
-        ],
-        'account' => (object) [
-          'type' => 'belongsTo',
-          'foreign' => 'properties',
-          'entity' => 'Account'
-        ],
-        'documents' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'properties',
-          'entity' => 'Document'
-        ],
-        'location' => (object) [
-          'type' => 'belongsTo',
-          'foreign' => 'properties',
-          'entity' => 'RealEstateLocation'
-        ],
-        'opportunities' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'property',
-          'entity' => 'Opportunity'
-        ],
-        'meetings' => (object) [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Meeting',
-          'audited' => true
-        ],
-        'calls' => (object) [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Call',
-          'audited' => true
-        ],
-        'tasks' => (object) [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Task',
-          'audited' => true
-        ],
-        'requests' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'properties',
-          'entity' => 'RealEstateRequest',
-          'layoutRelationshipsDisabled' => true,
-          'disabled' => true,
-          'additionalColumns' => (object) [
-            'interestDegree' => (object) [
-              'type' => 'int',
-              'default' => 1
-            ]
-          ]
-        ]
-      ],
-      'collection' => (object) [
-        'sortBy' => 'createdAt',
-        'asc' => false,
-        'textFilterFields' => [
-          0 => 'name',
-          1 => 'addressCity',
-          2 => 'addressStreet',
-          3 => 'description'
-        ],
-        'orderBy' => 'createdAt',
-        'order' => 'desc'
-      ],
-      'indexes' => (object) [
-        'name' => (object) [
-          'columns' => [
-            0 => 'name',
-            1 => 'deleted'
-          ]
-        ],
-        'assignedUser' => (object) [
-          'columns' => [
-            0 => 'assignedUserId',
-            1 => 'deleted'
-          ]
-        ]
-      ],
-      'propertyTypes' => (object) [
-        'Apartment' => (object) [
-          'fieldList' => [
-            0 => 'bedroomCount',
-            1 => 'bathroomCount',
-            2 => 'floor',
-            3 => 'floorCount',
-            4 => 'yearBuilt',
-            5 => 'square'
-          ]
-        ],
-        'Separate House' => (object) [
-          'fieldList' => [
-            0 => 'bedroomCount',
-            1 => 'bathroomCount',
-            2 => 'floorCount',
-            3 => 'yearBuilt',
-            4 => 'square'
-          ]
-        ],
-        'Room' => (object) [
-          'fieldList' => [
-            0 => 'floor',
-            1 => 'yearBuilt',
-            2 => 'square'
-          ]
-        ],
-        'Office' => (object) [
-          'fieldList' => [
-            0 => 'floor',
-            1 => 'floorCount',
-            2 => 'yearBuilt',
-            3 => 'square'
-          ]
-        ],
-        'Land Lot' => (object) [
-          'fieldList' => [
-            0 => 'square'
-          ]
-        ],
-        'Warehouse' => (object) [
-          'fieldList' => [
-            0 => 'yearBuilt',
-            1 => 'square'
-          ]
-        ],
-        'Retail' => (object) [
-          'fieldList' => [
-            0 => 'yearBuilt',
-            1 => 'square'
-          ]
-        ],
-        'Farm' => (object) [
-          'fieldList' => [
-            0 => 'yearBuilt',
-            1 => 'square'
-          ]
-        ]
-      ],
-      'matchingFieldTypeList' => [
-        0 => 'int',
-        1 => 'float'
-      ]
-    ],
-    'RealEstateRequest' => (object) [
-      'fields' => (object) [
-        'name' => (object) [
-          'type' => 'varchar',
-          'readOnly' => true,
-          'view' => 'real-estate:views/real-estate-property/fields/name'
-        ],
-        'description' => (object) [
-          'type' => 'text'
-        ],
-        'createdAt' => (object) [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'modifiedAt' => (object) [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'createdBy' => (object) [
-          'type' => 'link',
-          'readOnly' => true
-        ],
-        'modifiedBy' => (object) [
-          'type' => 'link',
-          'readOnly' => true
-        ],
-        'assignedUser' => (object) [
-          'type' => 'link',
-          'required' => false
-        ],
-        'teams' => (object) [
-          'type' => 'linkMultiple'
-        ],
-        'status' => (object) [
-          'type' => 'enum',
-          'default' => 'New',
-          'options' => [
-            0 => 'New',
-            1 => 'Assigned',
-            2 => 'In Process',
-            3 => 'Completed',
-            4 => 'Canceled',
-            5 => 'Lost'
-          ],
-          'isSorted' => false,
-          'view' => 'views/fields/enum-styled',
-          'style' => (object) [
-            'Completed' => 'success',
-            'Lost' => 'danger',
-            'Canceled' => 'danger'
-          ]
-        ],
-        'type' => (object) [
-          'type' => 'enum',
-          'required' => false,
-          'options' => [
-            0 => 'Rent',
-            1 => 'Sale'
-          ],
-          'default' => 'Rent',
-          'isSorted' => false
-        ],
-        'propertyType' => (object) [
-          'type' => 'enum',
-          'view' => 'real-estate:views/real-estate-request/fields/property-type',
-          'customizationOptionsDisabled' => true,
-          'isSorted' => false,
-          'default' => 'Apartment'
-        ],
-        'number' => (object) [
-          'type' => 'autoincrement',
-          'autoincrement' => true,
-          'unique' => true
-        ],
-        'locations' => (object) [
-          'type' => 'linkMultiple',
-          'view' => 'views/fields/link-multiple-category-tree'
-        ],
-        'square' => (object) [
-          'type' => 'rangeFloat'
-        ],
-        'price' => (object) [
-          'type' => 'rangeCurrency',
-          'additionalAttributeList' => [
-            0 => 'fromPriceCurrency',
-            1 => 'toPriceCurrency'
-          ]
-        ],
-        'yearBuilt' => (object) [
-          'type' => 'rangeInt'
-        ],
-        'bedroomCount' => (object) [
-          'type' => 'rangeInt'
-        ],
-        'bathroomCount' => (object) [
-          'type' => 'rangeInt'
-        ],
-        'floor' => (object) [
-          'type' => 'rangeInt'
-        ],
-        'floorCount' => (object) [
-          'type' => 'rangeInt'
-        ],
-        'fromSquare' => (object) [
-          'type' => 'float',
-          'min' => 0
-        ],
-        'toSquare' => (object) [
-          'type' => 'float',
-          'min' => 0
-        ],
-        'fromYearBuilt' => (object) [
-          'type' => 'int',
-          'min' => 0,
-          'max' => 2100
-        ],
-        'toYearBuilt' => (object) [
-          'type' => 'int',
-          'min' => 0,
-          'max' => 2100
-        ],
-        'fromPrice' => (object) [
-          'type' => 'currency'
-        ],
-        'toPrice' => (object) [
-          'type' => 'currency'
-        ],
-        'fromBedroomCount' => (object) [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'toBedroomCount' => (object) [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'fromBathroomCount' => (object) [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'toBathroomCount' => (object) [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'fromFloor' => (object) [
-          'type' => 'int'
-        ],
-        'toFloor' => (object) [
-          'type' => 'int'
-        ],
-        'fromFloorCount' => (object) [
-          'type' => 'int'
-        ],
-        'toFloorCount' => (object) [
-          'type' => 'int'
-        ],
-        'contact' => (object) [
-          'type' => 'link'
-        ],
-        'contacts' => (object) [
-          'type' => 'linkMultiple',
-          'view' => 'real-estate:views/real-estate-request/fields/contacts'
-        ],
-        'matchingProperty' => (object) [
-          'type' => 'link',
-          'entity' => 'RealEstateProperty',
-          'notStorable' => true,
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'view' => 'real-estate:views/real-estate-request/fields/matching-property'
-        ],
-        'interestDegree' => (object) [
-          'type' => 'int',
-          'notStorable' => true,
-          'disabled' => true
-        ],
-        'matchingPropertyCount' => (object) [
-          'type' => 'int',
-          'readOnly' => true,
-          'matchingDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationMinDisabled' => true,
-          'customizationMaxDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationDefaultDisabled' => true
-        ],
-        'fromPriceCurrency' => (object) [
-          'type' => 'enum',
-          'view' => 'views/fields/currency-list',
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'layoutMassUpdateDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationOptionsDisabled' => true,
-          'customizationIsSortedDisabled' => true,
-          'customizationDisplayAsLabelDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
-          'maxLength' => 6
-        ],
-        'fromPriceConverted' => (object) [
-          'type' => 'currencyConverted',
-          'readOnly' => true,
-          'importDisabled' => true
-        ],
-        'toPriceCurrency' => (object) [
-          'type' => 'enum',
-          'view' => 'views/fields/currency-list',
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'layoutMassUpdateDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationOptionsDisabled' => true,
-          'customizationIsSortedDisabled' => true,
-          'customizationDisplayAsLabelDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
-          'maxLength' => 6
-        ],
-        'toPriceConverted' => (object) [
-          'type' => 'currencyConverted',
-          'readOnly' => true,
-          'importDisabled' => true
-        ]
-      ],
-      'links' => (object) [
-        'createdBy' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'modifiedBy' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'assignedUser' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'teams' => (object) [
-          'type' => 'hasMany',
-          'entity' => 'Team',
-          'relationName' => 'EntityTeam',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'minPrice' => (object) [
-          'type' => 'currency',
-          'required' => false
-        ],
-        'maxPrice' => (object) [
-          'type' => 'currency',
-          'required' => false
-        ],
-        'contact' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'Contact',
-          'foreign' => 'requestsPrimary'
-        ],
-        'contacts' => (object) [
-          'type' => 'hasMany',
-          'entity' => 'Contact',
-          'foreign' => 'requests',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'locations' => (object) [
-          'type' => 'hasMany',
-          'entity' => 'RealEstateLocation',
-          'foreign' => 'requests',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'opportunities' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'request',
-          'entity' => 'Opportunity'
-        ],
-        'meetings' => (object) [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Meeting',
-          'audited' => true
-        ],
-        'calls' => (object) [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Call',
-          'audited' => true
-        ],
-        'tasks' => (object) [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Task',
-          'audited' => true
-        ],
-        'properties' => (object) [
-          'type' => 'hasMany',
-          'foreign' => 'requests',
-          'entity' => 'RealEstateProperty',
-          'disabled' => true,
-          'layoutRelationshipsDisabled' => true
-        ]
-      ],
-      'collection' => (object) [
-        'sortBy' => 'createdAt',
-        'asc' => false,
-        'textFilterFields' => [
-          0 => 'name',
-          1 => 'description'
-        ],
-        'orderBy' => 'createdAt',
-        'order' => 'desc'
-      ],
-      'indexes' => (object) [
-        'name' => (object) [
-          'columns' => [
-            0 => 'name',
-            1 => 'deleted'
-          ]
-        ],
-        'assignedUser' => (object) [
-          'columns' => [
-            0 => 'assignedUserId',
-            1 => 'deleted'
-          ]
-        ]
-      ]
-    ],
-    'RealEstateSendMatchesQueueItem' => (object) [
-      'fields' => (object) [
-        'isProcessed' => (object) [
-          'type' => 'bool',
-          'readOnly' => true
-        ],
-        'createdAt' => (object) [
-          'type' => 'datetime',
-          'readOnly' => true
-        ]
-      ],
-      'links' => (object) [
-        'property' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'RealEstateProperty'
-        ],
-        'request' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'RealEstateRequest'
         ]
       ]
     ]
@@ -25444,7 +24029,7 @@ return (object) [
       'tab' => true,
       'acl' => true,
       'aclPortal' => 'recordAllAccountContactNo',
-      'module' => 'RealEstate',
+      'module' => 'Crm',
       'customizable' => true,
       'stream' => true,
       'importable' => true,
@@ -25581,7 +24166,7 @@ return (object) [
       'tab' => true,
       'acl' => true,
       'aclPortal' => 'recordAllAccountContactOwnNo',
-      'module' => 'RealEstate',
+      'module' => 'Crm',
       'customizable' => true,
       'stream' => true,
       'importable' => true,
@@ -25662,58 +24247,6 @@ return (object) [
         0 => 'Canceled',
         1 => 'Deferred'
       ]
-    ],
-    'RealEstateLocation' => (object) [
-      'entity' => true,
-      'layouts' => false,
-      'tab' => false,
-      'acl' => 'recordAllTeamNo',
-      'module' => 'RealEstate',
-      'customizable' => false,
-      'importable' => false,
-      'type' => 'CategoryTree',
-      'stream' => false,
-      'notifications' => false,
-      'aclPortal' => 'recordAllOwnNo'
-    ],
-    'RealEstateMatchingConfiguration' => (object) [
-      'module' => 'RealEstate'
-    ],
-    'RealEstateProperty' => (object) [
-      'entity' => true,
-      'layouts' => true,
-      'tab' => true,
-      'acl' => true,
-      'customizable' => true,
-      'importable' => true,
-      'notifications' => true,
-      'stream' => true,
-      'type' => 'Base',
-      'module' => 'RealEstate',
-      'object' => true,
-      'isCustom' => true,
-      'aclPortal' => 'recordAllOwnNo',
-      'statusField' => 'status'
-    ],
-    'RealEstateRequest' => (object) [
-      'entity' => true,
-      'layouts' => true,
-      'tab' => true,
-      'acl' => true,
-      'customizable' => true,
-      'importable' => true,
-      'notifications' => true,
-      'stream' => true,
-      'type' => 'Base',
-      'module' => 'RealEstate',
-      'object' => true,
-      'isCustom' => true,
-      'aclPortal' => 'recordAllOwnNo',
-      'statusField' => 'status'
-    ],
-    'RealEstateSendMatchesQueueItem' => (object) [
-      'module' => 'RealEstate',
-      'entity' => true
     ]
   ],
   'selectDefs' => (object) [

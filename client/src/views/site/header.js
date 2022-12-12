@@ -32,7 +32,7 @@ define('views/site/header', 'view', function (Dep) {
 
         template: 'site/header',
 
-        title: 'GestImmo',
+        title: 'EspoCRM',
 
         data: {
             title: this.title,

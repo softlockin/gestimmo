@@ -785,29 +785,6 @@ return [
           ]
         ],
         'order' => 26
-      ],
-      'realEstate' => [
-        'label' => 'Real Estate',
-        'items' => [
-          0 => [
-            'url' => '#RealEstateRequest/settings',
-            'label' => 'Settings',
-            'description' => 'realEstateSettings',
-            'iconClass' => 'fas fa-cog'
-          ],
-          1 => [
-            'url' => '#RealEstateLocation',
-            'label' => 'Locations',
-            'description' => 'realEstateLocations',
-            'iconClass' => 'fas fa-map-marked-alt'
-          ],
-          2 => [
-            'url' => '#RealEstateRequest/matchingConfiguration',
-            'label' => 'Property Matching',
-            'description' => 'propertyMatching',
-            'iconClass' => 'fas fa-equals'
-          ]
-        ]
       ]
     ],
     'appParams' => [
@@ -1601,32 +1578,28 @@ return [
           'name' => 'My Espo',
           'layout' => [
             0 => [
-              0 => [
-                'name' => 'Stream',
-                'id' => 'defaultStream'
-              ],
-              1 => [
-                'name' => 'Opportunities',
-                'id' => 'defaultOpportunities'
-              ],
-              2 => [
-                'name' => 'Activities',
-                'id' => 'defailtActivities'
-              ]
+              'id' => 'defaultActivities',
+              'name' => 'Activities',
+              'x' => 2,
+              'y' => 2,
+              'width' => 2,
+              'height' => 2
             ],
             1 => [
-              0 => [
-                'name' => 'Properties',
-                'id' => 'defaultProperties'
-              ],
-              1 => [
-                'name' => 'Requests',
-                'id' => 'defaultRequests'
-              ],
-              2 => [
-                'name' => 'Tasks',
-                'id' => 'defaultTasks'
-              ]
+              'id' => 'defaultStream',
+              'name' => 'Stream',
+              'x' => 0,
+              'y' => 0,
+              'width' => 2,
+              'height' => 4
+            ],
+            2 => [
+              'id' => 'defaultTasks',
+              'name' => 'Tasks',
+              'x' => 2,
+              'y' => 4,
+              'width' => 2,
+              'height' => 2
             ]
           ]
         ]
@@ -1635,8 +1608,7 @@ return [
     'defaultDashboardOptions' => [
       'Standard' => [
         'defaultStream' => [
-          'displayRecords' => 5,
-          'isDoubleHeight' => false
+          'displayRecords' => 10
         ]
       ]
     ],
@@ -6099,9 +6071,6 @@ return [
           'rowActionsView' => 'crm:views/record/row-actions/relationship-target',
           'layout' => 'listForTarget',
           'view' => 'crm:views/record/panels/target-lists'
-        ],
-        'properties' => [
-          'layout' => 'listForContact'
         ]
       ],
       'boolFilterList' => [
@@ -6811,12 +6780,6 @@ return [
         ],
         'listForContact' => [
           'type' => 'listSmall'
-        ],
-        'listForProperty' => [
-          'type' => 'listSmall'
-        ],
-        'listForRequest' => [
-          'type' => 'listSmall'
         ]
       ],
       'kanbanViewMode' => true,
@@ -7048,288 +7011,6 @@ return [
       ],
       'iconClass' => 'fas fa-tasks',
       'kanbanViewMode' => true
-    ],
-    'RealEstateLocation' => [
-      'controller' => 'controllers/record-tree',
-      'collection' => 'collections/tree',
-      'menu' => [
-        'listTree' => [
-          'buttons' => [
-            0 => [
-              'label' => 'List View',
-              'link' => '#RealEstateLocation/list',
-              'acl' => 'read',
-              'style' => 'default'
-            ]
-          ]
-        ],
-        'list' => [
-          'buttons' => [
-            0 => [
-              'label' => 'Tree View',
-              'link' => '#RealEstateLocation',
-              'acl' => 'read',
-              'style' => 'default'
-            ]
-          ]
-        ]
-      ],
-      'recordViews' => [
-        'listTree' => 'real-estate:views/real-estate-location/record/list-tree'
-      ]
-    ],
-    'RealEstateProperty' => [
-      'controller' => 'real-estate:controllers/real-estate-property',
-      'dynamicHandler' => 'real-estate:property-dynamic-handler',
-      'boolFilterList' => [
-        0 => 'onlyMy'
-      ],
-      'filterList' => [
-        0 => 'actual',
-        1 => 'actualSale',
-        2 => 'actualRent',
-        3 => [
-          'name' => 'completed',
-          'style' => 'success'
-        ]
-      ],
-      'menu' => [
-        'list' => [
-          'dropdown' => [
-            0 => [
-              'link' => '#RealEstateLocation',
-              'aclScope' => 'RealEstateLocation',
-              'acl' => 'read',
-              'label' => 'Locations'
-            ]
-          ]
-        ]
-      ],
-      'recordViews' => [
-        'detail' => 'real-estate:views/real-estate-property/record/detail'
-      ],
-      'views' => [
-        'detail' => 'real-estate:views/real-estate-property/detail'
-      ],
-      'sidePanels' => [
-        'detail' => [
-          0 => [
-            'name' => 'activities',
-            'label' => 'Activities',
-            'view' => 'crm:views/record/panels/activities'
-          ],
-          1 => [
-            'name' => 'history',
-            'label' => 'History',
-            'view' => 'crm:views/record/panels/history'
-          ],
-          2 => [
-            'name' => 'tasks',
-            'label' => 'Tasks',
-            'view' => 'crm:views/record/panels/tasks'
-          ]
-        ]
-      ],
-      'bottomPanels' => [
-        'detail' => [
-          0 => [
-            'name' => 'matchingRequests',
-            'label' => 'Matching Requests',
-            'view' => 'real-estate:views/real-estate-property/record/panels/matching-requests',
-            'create' => false,
-            'select' => false,
-            'rowActionsView' => 'real-estate:views/real-estate-property/record/row-actions/matching-requests',
-            'layout' => 'listForProperty',
-            'actionList' => [
-              0 => [
-                'name' => 'listMatching',
-                'label' => 'List',
-                'action' => 'listMatching'
-              ]
-            ],
-            'order' => 4
-          ]
-        ]
-      ],
-      'relationshipPanels' => [
-        'opportunities' => [
-          'layout' => 'listForProperty',
-          'rowActionsView' => 'views/record/row-actions/relationship-no-unlink',
-          'view' => 'real-estate:views/real-estate-request/record/panels/opportunities',
-          'select' => false
-        ]
-      ],
-      'dynamicLogic' => [
-        'fields' => [
-          'matchingRequestCount' => [
-            'visible' => [
-              'conditionGroup' => [
-                0 => [
-                  'type' => 'notIn',
-                  'attribute' => 'status',
-                  'value' => [
-                    0 => 'Completed',
-                    1 => 'Canceled',
-                    2 => 'Lost'
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ],
-        'panels' => [
-          'matchingRequests' => [
-            'visible' => [
-              'conditionGroup' => [
-                0 => [
-                  'type' => 'notIn',
-                  'attribute' => 'status',
-                  'value' => [
-                    0 => 'Completed',
-                    1 => 'Canceled',
-                    2 => 'Lost'
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      'additionalLayouts' => [
-        'listForRequest' => [
-          'type' => 'list'
-        ],
-        'listForContact' => [
-          'type' => 'list'
-        ]
-      ],
-      'iconClass' => 'far fa-building',
-      'color' => '#aea7d4'
-    ],
-    'RealEstateRequest' => [
-      'controller' => 'real-estate:controllers/real-estate-request',
-      'dynamicHandler' => 'real-estate:request-dynamic-handler',
-      'boolFilterList' => [
-        0 => 'onlyMy'
-      ],
-      'filterList' => [
-        0 => 'actual',
-        1 => 'actualSale',
-        2 => 'actualRent',
-        3 => [
-          'name' => 'completed',
-          'style' => 'success'
-        ]
-      ],
-      'recordViews' => [
-        'detail' => 'real-estate:views/real-estate-request/record/detail'
-      ],
-      'views' => [
-        'detail' => 'real-estate:views/real-estate-request/detail'
-      ],
-      'menu' => [
-        'list' => [
-          'dropdown' => [
-            0 => [
-              'link' => '#RealEstateLocation',
-              'aclScope' => 'RealEstateLocation',
-              'acl' => 'read',
-              'label' => 'Locations'
-            ]
-          ]
-        ]
-      ],
-      'sidePanels' => [
-        'detail' => [
-          0 => [
-            'name' => 'activities',
-            'label' => 'Activities',
-            'view' => 'crm:views/record/panels/activities'
-          ],
-          1 => [
-            'name' => 'history',
-            'label' => 'History',
-            'view' => 'crm:views/record/panels/history'
-          ],
-          2 => [
-            'name' => 'tasks',
-            'label' => 'Tasks',
-            'view' => 'crm:views/record/panels/tasks'
-          ]
-        ]
-      ],
-      'bottomPanels' => [
-        'detail' => [
-          0 => [
-            'name' => 'matchingProperties',
-            'label' => 'Matching Properties',
-            'view' => 'real-estate:views/real-estate-request/record/panels/matching-properties',
-            'create' => false,
-            'select' => false,
-            'rowActionsView' => 'real-estate:views/real-estate-request/record/row-actions/matching-properties',
-            'layout' => 'listForRequest',
-            'actionList' => [
-              0 => [
-                'name' => 'listMatching',
-                'label' => 'List',
-                'action' => 'listMatching'
-              ]
-            ],
-            'order' => 4
-          ]
-        ]
-      ],
-      'relationshipPanels' => [
-        'opportunities' => [
-          'layout' => 'listForRequest',
-          'view' => 'real-estate:views/real-estate-request/record/panels/opportunities',
-          'rowActionsView' => 'views/record/row-actions/relationship-no-unlink',
-          'select' => false
-        ]
-      ],
-      'dynamicLogic' => [
-        'fields' => [
-          'matchingPropertyCount' => [
-            'visible' => [
-              'conditionGroup' => [
-                0 => [
-                  'type' => 'notIn',
-                  'attribute' => 'status',
-                  'value' => [
-                    0 => 'Completed',
-                    1 => 'Canceled',
-                    2 => 'Lost'
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ],
-        'panels' => [
-          'matchingProperties' => [
-            'visible' => [
-              'conditionGroup' => [
-                0 => [
-                  'type' => 'notIn',
-                  'attribute' => 'status',
-                  'value' => [
-                    0 => 'Completed',
-                    1 => 'Canceled',
-                    2 => 'Lost'
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      'additionalLayouts' => [
-        'listForProperty' => [
-          'type' => 'list'
-        ]
-      ],
-      'iconClass' => 'far fa-dot-circle',
-      'color' => '#eaa0a0'
     ]
   ],
   'dashlets' => [
@@ -8750,14 +8431,6 @@ return [
           'inPortalDisabled' => true
         ]
       ]
-    ],
-    'Properties' => [
-      'view' => 'real-estate:views/dashlets/properties',
-      'aclScope' => 'RealEstateProperty'
-    ],
-    'Requests' => [
-      'view' => 'real-estate:views/dashlets/requests',
-      'aclScope' => 'RealEstateRequest'
     ]
   ],
   'entityAcl' => [
@@ -9843,13 +9516,11 @@ return [
             3 => 'tooltipText'
           ],
           'entityList' => [
-            0 => 'RealEstateProperty',
-            1 => 'RealEstateRequest',
-            2 => 'Opportunity',
-            3 => 'Contact',
-            4 => 'Account',
-            5 => 'Lead',
-            6 => 'Case'
+            0 => 'Account',
+            1 => 'Lead',
+            2 => 'Contact',
+            3 => 'Opportunity',
+            4 => 'Case'
           ]
         ],
         'dateSent' => [
@@ -12170,32 +11841,11 @@ return [
         ],
         'Opportunity' => [
           'Proposal' => 'primary',
-          'Negotiation' => 'primary',
-          'Prospecting' => 'primary',
-          'Proposed' => 'primary',
-          'Presented' => 'primary',
-          'Closed Won' => 'success',
-          'Closed Lost' => 'danger'
+          'Negotiation' => 'primary'
         ],
         'Task' => [
           'Started' => 'primary',
           'Canceled' => 'danger'
-        ],
-        'RealEstateProperty' => [
-          'New' => 'primary',
-          'Assigned' => 'primary',
-          'In Process' => 'primary',
-          'Completed' => 'success',
-          'Canceled' => 'danger',
-          'Lost' => 'danger'
-        ],
-        'RealEstateRequest' => [
-          'New' => 'primary',
-          'Assigned' => 'primary',
-          'In Process' => 'primary',
-          'Completed' => 'success',
-          'Canceled' => 'danger',
-          'Lost' => 'danger'
         ]
       ],
       'indexes' => [
@@ -12227,22 +11877,6 @@ return [
             1 => 'number'
           ]
         ]
-      ],
-      'streamRelated' => [
-        'RealEstateProperty' => [
-          0 => 'meetings',
-          1 => 'calls',
-          2 => 'tasks'
-        ],
-        'RealEstateRequest' => [
-          0 => 'meetings',
-          1 => 'calls',
-          2 => 'tasks'
-        ]
-      ],
-      'statusFields' => [
-        'RealEstateProperty' => 'status',
-        'RealEstateRequest' => 'status'
       ]
     ],
     'Notification' => [
@@ -13059,9 +12693,7 @@ return [
         'SendEmailNotifications' => '*/2 * * * *',
         'ProcessWebhookQueue' => '*/5 * * * *',
         'ProcessMassEmail' => '15 * * * *',
-        'ControlKnowledgeBaseArticleStatus' => '10 1 * * *',
-        'PropertyMatchingUpdate' => '55 */2 * * *',
-        'SendPropertyMatches' => '*/2 * * * *'
+        'ControlKnowledgeBaseArticleStatus' => '10 1 * * *'
       ],
       'jobs' => [
         'SubmitPopupReminders' => [
@@ -13655,7 +13287,7 @@ return [
         ],
         'outboundEmailFromName' => [
           'type' => 'varchar',
-          'default' => 'GestImmo',
+          'default' => 'EspoCRM',
           'trim' => true
         ],
         'outboundEmailFromAddress' => [
@@ -14251,24 +13883,6 @@ return [
         'smsProvider' => [
           'type' => 'enum',
           'view' => 'views/settings/fields/sms-provider'
-        ],
-        'saleMarkup' => [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'rentMarkup' => [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'realEstateEmailSending' => [
-          'type' => 'bool'
-        ],
-        'realEstateEmailSendingAssignedUserCc' => [
-          'type' => 'bool'
-        ],
-        'realEstatePropertyTemplate' => [
-          'type' => 'link',
-          'entity' => 'EmailTemplate'
         ],
         'addressPreviewStreet' => [
           'notStorable' => true,
@@ -16101,11 +15715,6 @@ return [
           'type' => 'hasOne',
           'entity' => 'Lead',
           'foreign' => 'createdAccount'
-        ],
-        'properties' => [
-          'type' => 'hasMany',
-          'foreign' => 'account',
-          'entity' => 'RealEstateProperty'
         ]
       ],
       'collection' => [
@@ -16226,13 +15835,11 @@ return [
         'parent' => [
           'type' => 'linkParent',
           'entityList' => [
-            0 => 'RealEstateProperty',
-            1 => 'RealEstateRequest',
-            2 => 'Opportunity',
-            3 => 'Contact',
-            4 => 'Account',
-            5 => 'Lead',
-            6 => 'Case'
+            0 => 'Account',
+            1 => 'Lead',
+            2 => 'Contact',
+            3 => 'Opportunity',
+            4 => 'Case'
           ]
         ],
         'account' => [
@@ -17819,10 +17426,9 @@ return [
           'notStorable' => true,
           'options' => [
             0 => '',
-            1 => 'Landlord',
-            2 => 'Tenant',
-            3 => 'Property Manager',
-            4 => 'Requester'
+            1 => 'Decision Maker',
+            2 => 'Evaluator',
+            3 => 'Influencer'
           ],
           'layoutMassUpdateDisabled' => true,
           'layoutListDisabled' => true,
@@ -17920,8 +17526,7 @@ return [
               ]
             ]
           ],
-          'view' => 'crm:views/contact/fields/opportunity-role',
-          'default' => ''
+          'view' => 'crm:views/contact/fields/opportunity-role'
         ],
         'acceptanceStatus' => [
           'type' => 'varchar',
@@ -18090,18 +17695,6 @@ return [
           'notStorable' => true,
           'readOnly' => true,
           'disabled' => true
-        ],
-        'propertyRole' => [
-          'type' => 'enum',
-          'notStorable' => true,
-          'disabled' => true,
-          'default' => '',
-          'options' => [
-            0 => '',
-            1 => 'Landlord',
-            2 => 'Tenant',
-            3 => 'Property Manager'
-          ]
         ],
         'middleName' => [
           'type' => 'varchar',
@@ -18281,29 +17874,6 @@ return [
           'entity' => 'Task',
           'foreign' => 'contact',
           'layoutRelationshipsDisabled' => true
-        ],
-        'properties' => [
-          'type' => 'hasMany',
-          'foreign' => 'contacts',
-          'entity' => 'RealEstateProperty',
-          'selectParams' => [
-            'additionalColumns' => [
-              'role' => 'contactRole'
-            ]
-          ],
-          'columnAttributeMap' => [
-            'role' => 'propertyRole'
-          ]
-        ],
-        'requestsPrimary' => [
-          'type' => 'hasMany',
-          'foreign' => 'contact',
-          'entity' => 'RealEstateRequest'
-        ],
-        'requests' => [
-          'type' => 'hasMany',
-          'foreign' => 'contacts',
-          'entity' => 'RealEstateRequest'
         ]
       ],
       'collection' => [
@@ -18505,12 +18075,6 @@ return [
           'type' => 'belongsTo',
           'foreign' => 'documents',
           'entity' => 'DocumentFolder'
-        ],
-        'properties' => [
-          'type' => 'hasMany',
-          'foreign' => 'documents',
-          'entity' => 'RealEstateProperty',
-          'isCustom' => true
         ]
       ],
       'collection' => [
@@ -19675,13 +19239,11 @@ return [
         'parent' => [
           'type' => 'linkParent',
           'entityList' => [
-            0 => 'RealEstateProperty',
-            1 => 'RealEstateRequest',
-            2 => 'Opportunity',
-            3 => 'Contact',
-            4 => 'Account',
-            5 => 'Lead',
-            6 => 'Case'
+            0 => 'Account',
+            1 => 'Lead',
+            2 => 'Contact',
+            3 => 'Opportunity',
+            4 => 'Case'
           ]
         ],
         'account' => [
@@ -20089,7 +19651,7 @@ return [
       'fields' => [
         'name' => [
           'type' => 'varchar',
-          'required' => false,
+          'required' => true,
           'trim' => true,
           'pattern' => '$noBadCharacters'
         ],
@@ -20278,23 +19840,22 @@ return [
           'type' => 'enum',
           'options' => [
             0 => 'Prospecting',
-            1 => 'Proposed',
-            2 => 'Presented',
-            3 => 'Closed Won',
-            4 => 'Closed Lost'
+            1 => 'Qualification',
+            2 => 'Proposal',
+            3 => 'Negotiation',
+            4 => 'Closed Won',
+            5 => 'Closed Lost'
           ],
           'view' => 'crm:views/opportunity/fields/stage',
           'default' => 'Prospecting',
           'audited' => true,
           'probabilityMap' => [
-            'Prospecting' => 5,
+            'Prospecting' => 10,
             'Qualification' => 20,
             'Proposal' => 50,
             'Negotiation' => 80,
             'Closed Won' => 100,
-            'Closed Lost' => 0,
-            'Proposed' => 10,
-            'Presented' => 30
+            'Closed Lost' => 0
           ],
           'style' => [
             'Closed Won' => 'success',
@@ -20328,7 +19889,7 @@ return [
         ],
         'closeDate' => [
           'type' => 'date',
-          'required' => false,
+          'required' => true,
           'audited' => true
         ],
         'description' => [
@@ -20473,12 +20034,6 @@ return [
           'type' => 'linkMultiple',
           'view' => 'views/fields/teams'
         ],
-        'property' => [
-          'type' => 'link'
-        ],
-        'request' => [
-          'type' => 'link'
-        ],
         'amountCurrency' => [
           'type' => 'enum',
           'view' => 'views/fields/currency-list',
@@ -20581,16 +20136,6 @@ return [
           'type' => 'hasOne',
           'entity' => 'Lead',
           'foreign' => 'createdOpportunity'
-        ],
-        'property' => [
-          'type' => 'belongsTo',
-          'foreign' => 'opportunities',
-          'entity' => 'RealEstateProperty'
-        ],
-        'request' => [
-          'type' => 'belongsTo',
-          'foreign' => 'opportunities',
-          'entity' => 'RealEstateRequest'
         ]
       ],
       'collection' => [
@@ -21225,13 +20770,11 @@ return [
         'parent' => [
           'type' => 'linkParent',
           'entityList' => [
-            0 => 'RealEstateProperty',
-            1 => 'RealEstateRequest',
-            2 => 'Opportunity',
-            3 => 'Contact',
-            4 => 'Account',
-            5 => 'Lead',
-            6 => 'Case'
+            0 => 'Account',
+            1 => 'Contact',
+            2 => 'Lead',
+            3 => 'Opportunity',
+            4 => 'Case'
           ]
         ],
         'account' => [
@@ -21364,964 +20907,6 @@ return [
             0 => 'assignedUserId',
             1 => 'status'
           ]
-        ]
-      ]
-    ],
-    'RealEstateLocation' => [
-      'fields' => [
-        'name' => [
-          'type' => 'varchar',
-          'required' => true
-        ],
-        'description' => [
-          'type' => 'text'
-        ],
-        'createdAt' => [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'modifiedAt' => [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'createdBy' => [
-          'type' => 'link',
-          'readOnly' => true
-        ],
-        'modifiedBy' => [
-          'type' => 'link',
-          'readOnly' => true
-        ],
-        'teams' => [
-          'type' => 'linkMultiple'
-        ],
-        'parent' => [
-          'type' => 'link'
-        ],
-        'childList' => [
-          'type' => 'jsonArray',
-          'notStorable' => true
-        ],
-        'address' => [
-          'type' => 'address',
-          'tooltip' => true
-        ],
-        'addressStreet' => [
-          'type' => 'text',
-          'maxLength' => 255,
-          'dbType' => 'varchar'
-        ],
-        'addressCity' => [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-city',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressState' => [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-state',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressCountry' => [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-country',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressPostalCode' => [
-          'type' => 'varchar',
-          'maxLength' => 40,
-          'trim' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressMap' => [
-          'type' => 'map',
-          'notStorable' => true,
-          'readOnly' => true,
-          'layoutListDisabled' => true,
-          'provider' => 'Google',
-          'height' => 300,
-          'exportDisabled' => true,
-          'importDisabled' => true
-        ]
-      ],
-      'links' => [
-        'createdBy' => [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'modifiedBy' => [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'teams' => [
-          'type' => 'hasMany',
-          'entity' => 'Team',
-          'relationName' => 'entityTeam',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'parent' => [
-          'type' => 'belongsTo',
-          'foreign' => 'children',
-          'entity' => 'RealEstateLocation'
-        ],
-        'children' => [
-          'type' => 'hasMany',
-          'foreign' => 'parent',
-          'entity' => 'RealEstateLocation'
-        ],
-        'properties' => [
-          'type' => 'hasMany',
-          'foreign' => 'location',
-          'entity' => 'RealEstateProperty'
-        ],
-        'requests' => [
-          'type' => 'hasMany',
-          'foreign' => 'locations',
-          'entity' => 'RealEstateRequest'
-        ],
-        'locations' => [
-          'type' => 'hasMany',
-          'foreign' => 'properties',
-          'entity' => 'RealEstateProperty'
-        ]
-      ],
-      'collection' => [
-        'sortBy' => 'parent',
-        'asc' => true,
-        'orderBy' => 'parent',
-        'order' => 'asc'
-      ],
-      'additionalTables' => [
-        'RealEstateLocationPath' => [
-          'fields' => [
-            'id' => [
-              'type' => 'id',
-              'dbType' => 'int',
-              'len' => '11',
-              'autoincrement' => true,
-              'unique' => true
-            ],
-            'ascendorId' => [
-              'type' => 'varchar',
-              'len' => '100',
-              'index' => true
-            ],
-            'descendorId' => [
-              'type' => 'varchar',
-              'len' => '24',
-              'index' => true
-            ]
-          ]
-        ]
-      ]
-    ],
-    'RealEstateProperty' => [
-      'fields' => [
-        'name' => [
-          'type' => 'varchar',
-          'readOnly' => true,
-          'view' => 'real-estate:views/real-estate-property/fields/name',
-          'matchingDisabled' => true
-        ],
-        'description' => [
-          'type' => 'text'
-        ],
-        'createdAt' => [
-          'type' => 'datetime',
-          'readOnly' => true,
-          'matchingDisabled' => true
-        ],
-        'modifiedAt' => [
-          'type' => 'datetime',
-          'readOnly' => true,
-          'matchingDisabled' => true
-        ],
-        'createdBy' => [
-          'type' => 'link',
-          'readOnly' => true,
-          'matchingDisabled' => true
-        ],
-        'modifiedBy' => [
-          'type' => 'link',
-          'readOnly' => true,
-          'matchingDisabled' => true
-        ],
-        'assignedUser' => [
-          'type' => 'link',
-          'required' => false
-        ],
-        'teams' => [
-          'type' => 'linkMultiple'
-        ],
-        'type' => [
-          'type' => 'enum',
-          'options' => [
-            0 => 'Apartment',
-            1 => 'Separate House',
-            2 => 'Room',
-            3 => 'Land Lot',
-            4 => 'Office',
-            5 => 'Warehouse',
-            6 => 'Retail',
-            7 => 'Farm'
-          ],
-          'isSorted' => false,
-          'default' => 'Apartment',
-          'matchingDisabled' => true
-        ],
-        'address' => [
-          'type' => 'address'
-        ],
-        'addressMap' => [
-          'type' => 'map',
-          'notStorable' => true,
-          'readOnly' => true,
-          'layoutListDisabled' => true,
-          'provider' => 'Google',
-          'height' => 300,
-          'exportDisabled' => true,
-          'importDisabled' => true,
-          'view' => 'real-estate:views/real-estate-property/fields/address-map',
-          'layoutSearchDisabled' => true,
-          'layoutMassUpdateDisabled' => true
-        ],
-        'status' => [
-          'type' => 'enum',
-          'options' => [
-            0 => 'New',
-            1 => 'Assigned',
-            2 => 'In Process',
-            3 => 'Completed',
-            4 => 'Canceled',
-            5 => 'Lost'
-          ],
-          'default' => 'New',
-          'isSorted' => false,
-          'view' => 'views/fields/enum-styled',
-          'style' => [
-            'Completed' => 'success',
-            'Lost' => 'danger',
-            'Canceled' => 'danger'
-          ],
-          'matchingDisabled' => true
-        ],
-        'number' => [
-          'type' => 'autoincrement',
-          'autoincrement' => true,
-          'unique' => true,
-          'matchingDisabled' => true
-        ],
-        'location' => [
-          'type' => 'link',
-          'view' => 'real-estate:views/real-estate-property/fields/location',
-          'matchingDisabled' => true
-        ],
-        'images' => [
-          'type' => 'attachmentMultiple',
-          'required' => false,
-          'layoutListDisabled' => true
-        ],
-        'contacts' => [
-          'type' => 'linkMultiple',
-          'view' => 'real-estate:views/real-estate-property/fields/contacts',
-          'columns' => [
-            'role' => 'propertyRole'
-          ],
-          'additionalAttributeList' => [
-            0 => 'columns'
-          ]
-        ],
-        'contactRole' => [
-          'view' => 'real-estate:views/real-estate-property/fields/contact-role',
-          'type' => 'enum',
-          'notStorable' => true,
-          'layoutMassDetailDisabled' => true,
-          'layoutMassUpdateDisabled' => true,
-          'layoutMassFiltersDisabled' => true,
-          'customizationOptionsDisabled' => true,
-          'layoutAvailabilityList' => [
-            0 => 'listForContact'
-          ],
-          'translation' => 'Contact.options.propertyRole'
-        ],
-        'account' => [
-          'type' => 'link',
-          'matchingDisabled' => true
-        ],
-        'requestType' => [
-          'type' => 'enum',
-          'required' => false,
-          'default' => 'Rent',
-          'view' => 'real-estate:views/real-estate-property/fields/request-type',
-          'customizationOptionsDisabled' => true,
-          'isSorted' => false,
-          'matchingDisabled' => true
-        ],
-        'price' => [
-          'type' => 'currency',
-          'required' => false,
-          'matchingDisabled' => true
-        ],
-        'square' => [
-          'notNull' => false,
-          'type' => 'float',
-          'required' => false,
-          'min' => 0,
-          'isMatching' => true
-        ],
-        'yearBuilt' => [
-          'type' => 'int',
-          'required' => false,
-          'min' => 0,
-          'max' => 2100,
-          'disableFormatting' => true,
-          'isMatching' => true
-        ],
-        'bedroomCount' => [
-          'type' => 'int',
-          'required' => false,
-          'min' => 0,
-          'isMatching' => true
-        ],
-        'bathroomCount' => [
-          'type' => 'int',
-          'required' => false,
-          'min' => 0,
-          'isMatching' => true
-        ],
-        'floor' => [
-          'type' => 'int',
-          'required' => false,
-          'isMatching' => true
-        ],
-        'floorCount' => [
-          'type' => 'int',
-          'required' => false,
-          'min' => 0,
-          'default' => 1,
-          'isMatching' => true
-        ],
-        'matchingRequest' => [
-          'type' => 'link',
-          'entity' => 'RealEstateRequest',
-          'notStorable' => true,
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'view' => 'real-estate:views/real-estate-property/fields/matching-request',
-          'matchingDisabled' => true
-        ],
-        'interestDegree' => [
-          'type' => 'int',
-          'notStorable' => true,
-          'disabled' => true,
-          'matchingDisabled' => true
-        ],
-        'matchingRequestCount' => [
-          'type' => 'int',
-          'readOnly' => true,
-          'matchingDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationMinDisabled' => true,
-          'customizationMaxDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationDefaultDisabled' => true
-        ],
-        'addressStreet' => [
-          'type' => 'text',
-          'maxLength' => 255,
-          'dbType' => 'varchar'
-        ],
-        'addressCity' => [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-city',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressState' => [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-state',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressCountry' => [
-          'type' => 'varchar',
-          'trim' => true,
-          'maxLength' => 255,
-          'view' => 'views/fields/address-country',
-          'customizationOptionsDisabled' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'addressPostalCode' => [
-          'type' => 'varchar',
-          'maxLength' => 40,
-          'trim' => true,
-          'pattern' => '$noBadCharacters'
-        ],
-        'priceCurrency' => [
-          'type' => 'enum',
-          'view' => 'views/fields/currency-list',
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'layoutMassUpdateDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationOptionsDisabled' => true,
-          'customizationIsSortedDisabled' => true,
-          'customizationDisplayAsLabelDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
-          'maxLength' => 6
-        ],
-        'priceConverted' => [
-          'type' => 'currencyConverted',
-          'readOnly' => true,
-          'importDisabled' => true
-        ]
-      ],
-      'links' => [
-        'createdBy' => [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'modifiedBy' => [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'assignedUser' => [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'teams' => [
-          'type' => 'hasMany',
-          'entity' => 'Team',
-          'relationName' => 'EntityTeam',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'images' => [
-          'type' => 'hasChildren',
-          'entity' => 'Attachment',
-          'foreign' => 'parent',
-          'layoutRelationshipsDisabled' => true,
-          'relationName' => 'attachments'
-        ],
-        'contacts' => [
-          'type' => 'hasMany',
-          'foreign' => 'properties',
-          'entity' => 'Contact',
-          'additionalColumns' => [
-            'role' => [
-              'type' => 'varchar',
-              'len' => 50
-            ]
-          ],
-          'columnAttributeMap' => [
-            'role' => 'contactRole'
-          ]
-        ],
-        'account' => [
-          'type' => 'belongsTo',
-          'foreign' => 'properties',
-          'entity' => 'Account'
-        ],
-        'documents' => [
-          'type' => 'hasMany',
-          'foreign' => 'properties',
-          'entity' => 'Document'
-        ],
-        'location' => [
-          'type' => 'belongsTo',
-          'foreign' => 'properties',
-          'entity' => 'RealEstateLocation'
-        ],
-        'opportunities' => [
-          'type' => 'hasMany',
-          'foreign' => 'property',
-          'entity' => 'Opportunity'
-        ],
-        'meetings' => [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Meeting',
-          'audited' => true
-        ],
-        'calls' => [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Call',
-          'audited' => true
-        ],
-        'tasks' => [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Task',
-          'audited' => true
-        ],
-        'requests' => [
-          'type' => 'hasMany',
-          'foreign' => 'properties',
-          'entity' => 'RealEstateRequest',
-          'layoutRelationshipsDisabled' => true,
-          'disabled' => true,
-          'additionalColumns' => [
-            'interestDegree' => [
-              'type' => 'int',
-              'default' => 1
-            ]
-          ]
-        ]
-      ],
-      'collection' => [
-        'sortBy' => 'createdAt',
-        'asc' => false,
-        'textFilterFields' => [
-          0 => 'name',
-          1 => 'addressCity',
-          2 => 'addressStreet',
-          3 => 'description'
-        ],
-        'orderBy' => 'createdAt',
-        'order' => 'desc'
-      ],
-      'indexes' => [
-        'name' => [
-          'columns' => [
-            0 => 'name',
-            1 => 'deleted'
-          ]
-        ],
-        'assignedUser' => [
-          'columns' => [
-            0 => 'assignedUserId',
-            1 => 'deleted'
-          ]
-        ]
-      ],
-      'propertyTypes' => [
-        'Apartment' => [
-          'fieldList' => [
-            0 => 'bedroomCount',
-            1 => 'bathroomCount',
-            2 => 'floor',
-            3 => 'floorCount',
-            4 => 'yearBuilt',
-            5 => 'square'
-          ]
-        ],
-        'Separate House' => [
-          'fieldList' => [
-            0 => 'bedroomCount',
-            1 => 'bathroomCount',
-            2 => 'floorCount',
-            3 => 'yearBuilt',
-            4 => 'square'
-          ]
-        ],
-        'Room' => [
-          'fieldList' => [
-            0 => 'floor',
-            1 => 'yearBuilt',
-            2 => 'square'
-          ]
-        ],
-        'Office' => [
-          'fieldList' => [
-            0 => 'floor',
-            1 => 'floorCount',
-            2 => 'yearBuilt',
-            3 => 'square'
-          ]
-        ],
-        'Land Lot' => [
-          'fieldList' => [
-            0 => 'square'
-          ]
-        ],
-        'Warehouse' => [
-          'fieldList' => [
-            0 => 'yearBuilt',
-            1 => 'square'
-          ]
-        ],
-        'Retail' => [
-          'fieldList' => [
-            0 => 'yearBuilt',
-            1 => 'square'
-          ]
-        ],
-        'Farm' => [
-          'fieldList' => [
-            0 => 'yearBuilt',
-            1 => 'square'
-          ]
-        ]
-      ],
-      'matchingFieldTypeList' => [
-        0 => 'int',
-        1 => 'float'
-      ]
-    ],
-    'RealEstateRequest' => [
-      'fields' => [
-        'name' => [
-          'type' => 'varchar',
-          'readOnly' => true,
-          'view' => 'real-estate:views/real-estate-property/fields/name'
-        ],
-        'description' => [
-          'type' => 'text'
-        ],
-        'createdAt' => [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'modifiedAt' => [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'createdBy' => [
-          'type' => 'link',
-          'readOnly' => true
-        ],
-        'modifiedBy' => [
-          'type' => 'link',
-          'readOnly' => true
-        ],
-        'assignedUser' => [
-          'type' => 'link',
-          'required' => false
-        ],
-        'teams' => [
-          'type' => 'linkMultiple'
-        ],
-        'status' => [
-          'type' => 'enum',
-          'default' => 'New',
-          'options' => [
-            0 => 'New',
-            1 => 'Assigned',
-            2 => 'In Process',
-            3 => 'Completed',
-            4 => 'Canceled',
-            5 => 'Lost'
-          ],
-          'isSorted' => false,
-          'view' => 'views/fields/enum-styled',
-          'style' => [
-            'Completed' => 'success',
-            'Lost' => 'danger',
-            'Canceled' => 'danger'
-          ]
-        ],
-        'type' => [
-          'type' => 'enum',
-          'required' => false,
-          'options' => [
-            0 => 'Rent',
-            1 => 'Sale'
-          ],
-          'default' => 'Rent',
-          'isSorted' => false
-        ],
-        'propertyType' => [
-          'type' => 'enum',
-          'view' => 'real-estate:views/real-estate-request/fields/property-type',
-          'customizationOptionsDisabled' => true,
-          'isSorted' => false,
-          'default' => 'Apartment'
-        ],
-        'number' => [
-          'type' => 'autoincrement',
-          'autoincrement' => true,
-          'unique' => true
-        ],
-        'locations' => [
-          'type' => 'linkMultiple',
-          'view' => 'views/fields/link-multiple-category-tree'
-        ],
-        'square' => [
-          'type' => 'rangeFloat'
-        ],
-        'price' => [
-          'type' => 'rangeCurrency',
-          'additionalAttributeList' => [
-            0 => 'fromPriceCurrency',
-            1 => 'toPriceCurrency'
-          ]
-        ],
-        'yearBuilt' => [
-          'type' => 'rangeInt'
-        ],
-        'bedroomCount' => [
-          'type' => 'rangeInt'
-        ],
-        'bathroomCount' => [
-          'type' => 'rangeInt'
-        ],
-        'floor' => [
-          'type' => 'rangeInt'
-        ],
-        'floorCount' => [
-          'type' => 'rangeInt'
-        ],
-        'fromSquare' => [
-          'type' => 'float',
-          'min' => 0
-        ],
-        'toSquare' => [
-          'type' => 'float',
-          'min' => 0
-        ],
-        'fromYearBuilt' => [
-          'type' => 'int',
-          'min' => 0,
-          'max' => 2100
-        ],
-        'toYearBuilt' => [
-          'type' => 'int',
-          'min' => 0,
-          'max' => 2100
-        ],
-        'fromPrice' => [
-          'type' => 'currency'
-        ],
-        'toPrice' => [
-          'type' => 'currency'
-        ],
-        'fromBedroomCount' => [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'toBedroomCount' => [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'fromBathroomCount' => [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'toBathroomCount' => [
-          'type' => 'int',
-          'min' => 0
-        ],
-        'fromFloor' => [
-          'type' => 'int'
-        ],
-        'toFloor' => [
-          'type' => 'int'
-        ],
-        'fromFloorCount' => [
-          'type' => 'int'
-        ],
-        'toFloorCount' => [
-          'type' => 'int'
-        ],
-        'contact' => [
-          'type' => 'link'
-        ],
-        'contacts' => [
-          'type' => 'linkMultiple',
-          'view' => 'real-estate:views/real-estate-request/fields/contacts'
-        ],
-        'matchingProperty' => [
-          'type' => 'link',
-          'entity' => 'RealEstateProperty',
-          'notStorable' => true,
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'view' => 'real-estate:views/real-estate-request/fields/matching-property'
-        ],
-        'interestDegree' => [
-          'type' => 'int',
-          'notStorable' => true,
-          'disabled' => true
-        ],
-        'matchingPropertyCount' => [
-          'type' => 'int',
-          'readOnly' => true,
-          'matchingDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationMinDisabled' => true,
-          'customizationMaxDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationDefaultDisabled' => true
-        ],
-        'fromPriceCurrency' => [
-          'type' => 'enum',
-          'view' => 'views/fields/currency-list',
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'layoutMassUpdateDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationOptionsDisabled' => true,
-          'customizationIsSortedDisabled' => true,
-          'customizationDisplayAsLabelDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
-          'maxLength' => 6
-        ],
-        'fromPriceConverted' => [
-          'type' => 'currencyConverted',
-          'readOnly' => true,
-          'importDisabled' => true
-        ],
-        'toPriceCurrency' => [
-          'type' => 'enum',
-          'view' => 'views/fields/currency-list',
-          'layoutDetailDisabled' => true,
-          'layoutListDisabled' => true,
-          'layoutMassUpdateDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'customizationRequiredDisabled' => true,
-          'customizationOptionsDisabled' => true,
-          'customizationIsSortedDisabled' => true,
-          'customizationDisplayAsLabelDisabled' => true,
-          'customizationAuditedDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
-          'maxLength' => 6
-        ],
-        'toPriceConverted' => [
-          'type' => 'currencyConverted',
-          'readOnly' => true,
-          'importDisabled' => true
-        ]
-      ],
-      'links' => [
-        'createdBy' => [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'modifiedBy' => [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'assignedUser' => [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'teams' => [
-          'type' => 'hasMany',
-          'entity' => 'Team',
-          'relationName' => 'EntityTeam',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'minPrice' => [
-          'type' => 'currency',
-          'required' => false
-        ],
-        'maxPrice' => [
-          'type' => 'currency',
-          'required' => false
-        ],
-        'contact' => [
-          'type' => 'belongsTo',
-          'entity' => 'Contact',
-          'foreign' => 'requestsPrimary'
-        ],
-        'contacts' => [
-          'type' => 'hasMany',
-          'entity' => 'Contact',
-          'foreign' => 'requests',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'locations' => [
-          'type' => 'hasMany',
-          'entity' => 'RealEstateLocation',
-          'foreign' => 'requests',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'opportunities' => [
-          'type' => 'hasMany',
-          'foreign' => 'request',
-          'entity' => 'Opportunity'
-        ],
-        'meetings' => [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Meeting',
-          'audited' => true
-        ],
-        'calls' => [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Call',
-          'audited' => true
-        ],
-        'tasks' => [
-          'type' => 'hasChildren',
-          'foreign' => 'parent',
-          'entity' => 'Task',
-          'audited' => true
-        ],
-        'properties' => [
-          'type' => 'hasMany',
-          'foreign' => 'requests',
-          'entity' => 'RealEstateProperty',
-          'disabled' => true,
-          'layoutRelationshipsDisabled' => true
-        ]
-      ],
-      'collection' => [
-        'sortBy' => 'createdAt',
-        'asc' => false,
-        'textFilterFields' => [
-          0 => 'name',
-          1 => 'description'
-        ],
-        'orderBy' => 'createdAt',
-        'order' => 'desc'
-      ],
-      'indexes' => [
-        'name' => [
-          'columns' => [
-            0 => 'name',
-            1 => 'deleted'
-          ]
-        ],
-        'assignedUser' => [
-          'columns' => [
-            0 => 'assignedUserId',
-            1 => 'deleted'
-          ]
-        ]
-      ]
-    ],
-    'RealEstateSendMatchesQueueItem' => [
-      'fields' => [
-        'isProcessed' => [
-          'type' => 'bool',
-          'readOnly' => true
-        ],
-        'createdAt' => [
-          'type' => 'datetime',
-          'readOnly' => true
-        ]
-      ],
-      'links' => [
-        'property' => [
-          'type' => 'belongsTo',
-          'entity' => 'RealEstateProperty'
-        ],
-        'request' => [
-          'type' => 'belongsTo',
-          'entity' => 'RealEstateRequest'
         ]
       ]
     ]
@@ -25444,7 +24029,7 @@ return [
       'tab' => true,
       'acl' => true,
       'aclPortal' => 'recordAllAccountContactNo',
-      'module' => 'RealEstate',
+      'module' => 'Crm',
       'customizable' => true,
       'stream' => true,
       'importable' => true,
@@ -25581,7 +24166,7 @@ return [
       'tab' => true,
       'acl' => true,
       'aclPortal' => 'recordAllAccountContactOwnNo',
-      'module' => 'RealEstate',
+      'module' => 'Crm',
       'customizable' => true,
       'stream' => true,
       'importable' => true,
@@ -25662,58 +24247,6 @@ return [
         0 => 'Canceled',
         1 => 'Deferred'
       ]
-    ],
-    'RealEstateLocation' => [
-      'entity' => true,
-      'layouts' => false,
-      'tab' => false,
-      'acl' => 'recordAllTeamNo',
-      'module' => 'RealEstate',
-      'customizable' => false,
-      'importable' => false,
-      'type' => 'CategoryTree',
-      'stream' => false,
-      'notifications' => false,
-      'aclPortal' => 'recordAllOwnNo'
-    ],
-    'RealEstateMatchingConfiguration' => [
-      'module' => 'RealEstate'
-    ],
-    'RealEstateProperty' => [
-      'entity' => true,
-      'layouts' => true,
-      'tab' => true,
-      'acl' => true,
-      'customizable' => true,
-      'importable' => true,
-      'notifications' => true,
-      'stream' => true,
-      'type' => 'Base',
-      'module' => 'RealEstate',
-      'object' => true,
-      'isCustom' => true,
-      'aclPortal' => 'recordAllOwnNo',
-      'statusField' => 'status'
-    ],
-    'RealEstateRequest' => [
-      'entity' => true,
-      'layouts' => true,
-      'tab' => true,
-      'acl' => true,
-      'customizable' => true,
-      'importable' => true,
-      'notifications' => true,
-      'stream' => true,
-      'type' => 'Base',
-      'module' => 'RealEstate',
-      'object' => true,
-      'isCustom' => true,
-      'aclPortal' => 'recordAllOwnNo',
-      'statusField' => 'status'
-    ],
-    'RealEstateSendMatchesQueueItem' => [
-      'module' => 'RealEstate',
-      'entity' => true
     ]
   ],
   'selectDefs' => [

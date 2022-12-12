@@ -112,10 +112,7 @@ return [
       'Configuration Instructions' => 'Configuration Instructions',
       'Formula Sandbox' => 'Formula Sandbox',
       'is recommended' => 'est recommandé',
-      'extension is missing' => 'l\'extension est manquante',
-      'Real Estate' => 'Immobilier',
-      'Locations' => 'Emplacements',
-      'Property Matching' => 'Property Matching'
+      'extension is missing' => 'l\'extension est manquante'
     ],
     'layouts' => [
       'list' => 'Liste',
@@ -142,9 +139,7 @@ return [
       'kanban' => 'Kanban',
       'detailConvert' => 'Convertir le prospect',
       'listForAccount' => 'Liste (compte)',
-      'listForContact' => 'Liste (pour contact)',
-      'listForProperty' => 'Liste (pour Bien)',
-      'listForRequest' => 'Liste (pour Demande)'
+      'listForContact' => 'Liste (pour contact)'
     ],
     'fieldTypes' => [
       'address' => 'Adresse',
@@ -327,10 +322,7 @@ return [
       'jobsSettings' => 'Job processing settings. Jobs execute tasks in the background.',
       'sms' => 'SMS settings.',
       'pdfTemplates' => 'Modèles pour l\'impression au format PDF.',
-      'formulaSandbox' => 'Write and test formula scripts.',
-      'realEstateSettings' => 'Param�tres pour l\'extension immobili�re.',
-      'realEstateLocations' => 'G�rer les Emplacements Immobilier.',
-      'propertyMatching' => 'Matching configuration.'
+      'formulaSandbox' => 'Write and test formula scripts.'
     ],
     'keywords' => [
       'settings' => 'system',
@@ -1453,10 +1445,7 @@ You can add a \'Sent\' folder to sync emails sent from an external email client.
       'Activities' => 'Activités',
       'KnowledgeBaseArticle' => 'Article de la base de connaissance',
       'KnowledgeBaseCategory' => 'Catégorie de la base de connaissance',
-      'CampaignLogRecord' => 'Campaign Log Record',
-      'RealEstateProperty' => 'Biens',
-      'RealEstateRequest' => 'Demande',
-      'RealEstateLocation' => 'Emplacement'
+      'CampaignLogRecord' => 'Campaign Log Record'
     ],
     'scopeNamesPlural' => [
       'Note' => 'Notes',
@@ -1523,10 +1512,7 @@ You can add a \'Sent\' folder to sync emails sent from an external email client.
       'Activities' => 'Activités',
       'KnowledgeBaseArticle' => 'Base de connaissance',
       'KnowledgeBaseCategory' => 'Catégories de la base de connaissance',
-      'CampaignLogRecord' => 'Logs',
-      'RealEstateProperty' => 'Biens',
-      'RealEstateRequest' => 'Demandes',
-      'RealEstateLocation' => 'Emplacements'
+      'CampaignLogRecord' => 'Logs'
     ],
     'labels' => [
       'Sort' => 'Sort',
@@ -1915,9 +1901,7 @@ Validation: `{type}`',
       'OpportunitiesByLeadSource' => 'Opportunités par source de prospects',
       'SalesByMonth' => 'Ventes par mois',
       'SalesPipeline' => 'Canaux de vente',
-      'Activities' => 'Mes activités',
-      'Properties' => 'Mes Biens',
-      'Requests' => 'Mes demandes'
+      'Activities' => 'Mes activités'
     ],
     'notificationMessages' => [
       'assign' => '{entityType} {entity} vous a été assigné',
@@ -3054,9 +3038,7 @@ no - can\'t view',
         'CheckNewVersion' => 'Vérifier la nouvelle version',
         'ProcessWebhookQueue' => 'Traiter la file d\'attente Webhook',
         'ProcessMassEmail' => 'Envoyer emails groupés',
-        'ControlKnowledgeBaseArticleStatus' => 'Control Knowledge Base Article Status',
-        'PropertyMatchingUpdate' => 'Property Matching Update',
-        'SendPropertyMatches' => 'Send Matched Properties to Requestors'
+        'ControlKnowledgeBaseArticleStatus' => 'Control Knowledge Base Article Status'
       ],
       'cronSetup' => [
         'linux' => 'Note: Ajoutez cette ligne dans le fichier crontab pour lancer les tâches planifiées:',
@@ -3229,12 +3211,7 @@ no - can\'t view',
       'passwordStrengthBothCases' => 'Le mot de passe doit contenir des lettres en majuscule et en minuscule',
       'auth2FA' => 'Activer l\'authentification à 2 facteurs',
       'auth2FAForced' => 'Forcer les utilisateurs réguliers à utiliser l\'authentification à deux facteurs',
-      'auth2FAMethodList' => 'Méthodes 2FA disponibles',
-      'saleMarkup' => 'Honoraires de vente (%)',
-      'rentMarkup' => 'Honoraires de Location (%)',
-      'realEstateEmailSending' => 'Envoyer un courriel aux demandeurs concernant les biens correspondants',
-      'realEstatePropertyTemplate' => 'Mod�le d\'email de Bien',
-      'realEstateEmailSendingAssignedUserCc' => 'Ajouter Utilisateur selectionn� au CC'
+      'auth2FAMethodList' => 'Méthodes 2FA disponibles'
     ],
     'options' => [
       'currencyFormat' => [
@@ -3693,8 +3670,7 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'campaignLogRecords' => 'Log de campagne',
       'campaign' => 'Campagne',
       'portalUsers' => 'Utilisateurs Portail',
-      'originalLead' => 'Original Lead',
-      'properties' => 'Biens'
+      'originalLead' => 'Original Lead'
     ],
     'options' => [
       'type' => [
@@ -4082,9 +4058,7 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'acceptanceStatus' => 'Acceptance Status',
       'accountIsInactive' => 'Account Inactive',
       'acceptanceStatusMeetings' => 'Acceptance Status (Meetings)',
-      'acceptanceStatusCalls' => 'Acceptance Status (Calls)',
-      'properties' => 'Biens',
-      'propertyRole' => 'R�le'
+      'acceptanceStatusCalls' => 'Acceptance Status (Calls)'
     ],
     'links' => [
       'opportunities' => 'Opportunités',
@@ -4099,10 +4073,7 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'opportunitiesPrimary' => 'Opportunités (Parentes)',
       'portalUser' => 'Utilisateur Portail',
       'originalLead' => 'Original Lead',
-      'documents' => 'Documents',
-      'properties' => 'Biens',
-      'requests' => 'Demandes',
-      'requestsPrimary' => 'Demandes (principales)'
+      'documents' => 'Documents'
     ],
     'labels' => [
       'Create Contact' => 'Créer un Contact'
@@ -4113,12 +4084,6 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
         'Decision Maker' => 'Décisionnaire',
         'Evaluator' => 'Évaluateur',
         'Influencer' => 'Influenceur'
-      ],
-      'propertyRole' => [
-        'Landlord' => 'Propri�taire',
-        'Tenant' => 'Locataire',
-        'Property Manager' => 'Administrateur du Bien',
-        'Requester' => 'Demandeur'
       ]
     ],
     'presetFilters' => [
@@ -4141,16 +4106,14 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'expirationDate' => 'Date d\'expiration',
       'description' => 'Description',
       'accounts' => 'Comptes',
-      'folder' => 'Dossier',
-      'properties' => 'Biens'
+      'folder' => 'Dossier'
     ],
     'links' => [
       'accounts' => 'Comptes',
       'opportunities' => 'Opportunités',
       'folder' => 'Dossier',
       'leads' => 'Prospects',
-      'contacts' => 'Contacts',
-      'properties' => 'Biens'
+      'contacts' => 'Contacts'
     ],
     'options' => [
       'status' => [
@@ -4474,18 +4437,14 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'originalLead' => 'Original Lead',
       'amountCurrency' => 'Amount Currency',
       'contactRole' => 'Contact Role',
-      'lastStage' => 'Dernière étape',
-      'property' => 'Bien',
-      'request' => 'Demande'
+      'lastStage' => 'Dernière étape'
     ],
     'links' => [
       'contacts' => 'Contacts',
       'contact' => 'Contact (Parent)',
       'documents' => 'Documents',
       'campaign' => 'Campagne',
-      'originalLead' => 'Original Lead',
-      'property' => 'Bien',
-      'request' => 'Demande'
+      'originalLead' => 'Original Lead'
     ],
     'options' => [
       'stage' => [
@@ -4501,11 +4460,6 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
         'Negotiation/Review' => 'Négociation/évaluation',
         'Closed Won' => 'Conclusion gagnante',
         'Closed Lost' => 'Conclusion perdante'
-      ],
-      'contactRole' => [
-        'Landlord' => 'Propri�taire',
-        'Tenant' => 'Locataire',
-        'Property Manager' => 'Administrateur de biens'
       ]
     ],
     'labels' => [
@@ -4611,178 +4565,6 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
     ],
     'nameOptions' => [
       'replyToEmail' => 'Reply to email'
-    ]
-  ],
-  'RealEstateLocation' => [
-    'labels' => [
-      'Create Location' => 'Cr�er Emplacement'
-    ],
-    'fields' => [
-      'address' => 'Adresse'
-    ],
-    'tooltips' => [
-      'address' => 'This address will be inserted into property address field once you specify this location. Keep not needed address fields empty.'
-    ]
-  ],
-  'RealEstateMatchingConfiguration' => [
-    'fields' => [
-      'fieldList' => 'Field list used for matching'
-    ],
-    'messages' => [
-      'typeFieldsMap' => 'Fields available for property types'
-    ]
-  ],
-  'RealEstateProperty' => [
-    'labels' => [
-      'Create RealEstateProperty' => 'Cr�er un Bien',
-      'Matching Requests' => 'Biens correpondants',
-      'Locations' => 'Locations'
-    ],
-    'fields' => [
-      'type' => 'Type',
-      'address' => 'Adresse',
-      'contacts' => 'Contacts',
-      'status' => 'Statut',
-      'assignedUser' => 'Utilisateur assign�',
-      'images' => 'Images',
-      'sellers' => 'Vendeurs',
-      'square' => 'Surface',
-      'yearBuilt' => 'Ann�e de construction',
-      'documents' => 'Documents',
-      'requestType' => 'Type de Demande',
-      'price' => 'Prix',
-      'priceConverted' => 'Prix ??(converti)',
-      'bedroomCount' => 'Nombre de Chambres',
-      'bathroomCount' => 'Nombre de Salle de Bain',
-      'floor' => 'Niveau',
-      'floorCount' => 'Nombre Niveaux',
-      'location' => 'Emplacement',
-      'matchingRequest' => 'Biens correspondants',
-      'number' => 'Nombre',
-      'account' => 'Compte',
-      'addressMap' => 'Carte',
-      'matchingRequestCount' => 'Matching Count',
-      'contactRole' => 'Role'
-    ],
-    'options' => [
-      'type' => [
-        'Apartment' => 'Appartement',
-        'Separate House' => 'Maison Individuelle',
-        'Office' => 'Bureau',
-        'Warehouse' => 'Entrep�t',
-        'Retail' => 'Commerce',
-        'Farm' => 'Ferme',
-        'Room' => 'Chambre',
-        'Land Lot' => 'Terrain'
-      ],
-      'status' => [
-        'New' => 'Neuf',
-        'Assigned' => 'Assign�',
-        'In Process' => 'En cours',
-        'Completed' => 'Termin�',
-        'Canceled' => 'Annul�',
-        'Lost' => 'Perdu'
-      ],
-      'requestType' => [
-        'Rent' => 'Loyer',
-        'Sale' => 'Vente'
-      ]
-    ],
-    'links' => [
-      'contacts' => 'Contacts',
-      'documents' => 'Documents',
-      'opportunities' => 'Opportunit�s',
-      'location' => 'Emplacement',
-      'account' => 'Compte',
-      'matchingRequests' => 'Matching Requests'
-    ],
-    'presetFilters' => [
-      'completed' => 'Termin�',
-      'actual' => 'Actuel',
-      'actualRent' => 'Location en Cours',
-      'actualSale' => 'Vente en Cours'
-    ]
-  ],
-  'RealEstateRequest' => [
-    'labels' => [
-      'Create RealEstateRequest' => 'Cr�er une Demande',
-      'Matching Properties' => 'Biens Correspondants',
-      'Create Opportunity' => 'Cr�er une Opportunit�',
-      'Not Interested' => 'Pas int�ress�',
-      'Unset Not Interested' => 'D�sactiver Pas Int�ress�',
-      'Locations' => 'Locations',
-      'Min' => 'Min',
-      'Max' => 'Max'
-    ],
-    'fields' => [
-      'status' => 'Statut',
-      'assignedUser' => 'Utilisateur Assign�',
-      'type' => 'Type',
-      'propertyType' => 'Type de Bien',
-      'number' => 'Nombre',
-      'contact' => 'Contact',
-      'contacts' => 'Contacts',
-      'fromPrice' => 'Prix Min',
-      'toPrice' => 'Prix Max',
-      'fromSquare' => 'Surface Min',
-      'toSquare' => 'Surface Max',
-      'fromBedroomCount' => 'Nbre Chambre Min',
-      'toBedroomCount' => 'Nbre Chambre Max',
-      'fromBathroomCount' => 'Nbre SDB Min',
-      'toBathroomCount' => 'Nbre SDB Max',
-      'fromFloor' => 'Niveau Min',
-      'toFloor' => 'Niveau Max',
-      'fromFloorCount' => 'Nbre Niveaux Min',
-      'toFloorCount' => 'Nbre Niveaux Max',
-      'fromPriceConverted' => 'Prix Min (Converti)',
-      'toPriceConverted' => 'Prix Max (Converti)',
-      'price' => 'Prix',
-      'bedroomCount' => 'Nbre Chambre',
-      'bathroomCount' => 'Nbre SDB',
-      'floor' => 'niveau',
-      'floorCount' => 'Nbre de Niveaux',
-      'square' => 'Surface',
-      'locations' => 'Emplacements',
-      'matchingProperty' => 'Biens Correspondants',
-      'yearBuilt' => 'Ann�e de Construction',
-      'fromYearBuilt' => 'Ann�e de Construction Min',
-      'toYearBuilt' => 'Ann�e de Construction Max',
-      'matchingPropertyCount' => 'Matching Count'
-    ],
-    'links' => [
-      'contact' => 'Contact',
-      'contacts' => 'Contacts',
-      'opportunities' => 'Opportunit�s',
-      'locations' => 'Emplacements',
-      'matchingProperties' => 'Matching Properties'
-    ],
-    'options' => [
-      'status' => [
-        'New' => 'Neuf',
-        'Assigned' => 'Assign�',
-        'In Process' => 'En Cours',
-        'Completed' => 'Complet�',
-        'Canceled' => 'Annul�',
-        'Lost' => 'Perdu'
-      ],
-      'type' => [
-        'Rent' => 'Location',
-        'Sale' => 'Vente'
-      ],
-      'propertyType' => [
-        'Apartment' => 'Appartement',
-        'Separate House' => 'Maison Individuelle',
-        'Office' => 'Bureau',
-        'Warehouse' => 'Entrep�t',
-        'Retail' => 'Commerce',
-        'Farm' => 'Ferme'
-      ]
-    ],
-    'presetFilters' => [
-      'completed' => 'Termin�',
-      'actual' => 'Exact',
-      'actualRent' => 'Loyer en Cours',
-      'actualSale' => 'Vente en Cours'
     ]
   ]
 ];

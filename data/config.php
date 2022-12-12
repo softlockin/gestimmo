@@ -10,76 +10,66 @@ return [
   'recordsPerPage' => 20,
   'recordsPerPageSmall' => 5,
   'recordsPerPageSelect' => 10,
-  'applicationName' => 'GestImmo',
+  'applicationName' => 'EspoCRM',
   'version' => '7.2.7',
   'timeZone' => 'UTC',
   'dateFormat' => 'DD.MM.YYYY',
   'timeFormat' => 'HH:mm',
-  'weekStart' => 1,
-  'thousandSeparator' => '.',
-  'decimalMark' => ',',
+  'weekStart' => 0,
+  'thousandSeparator' => ',',
+  'decimalMark' => '.',
   'exportDelimiter' => ',',
   'currencyList' => [
-    0 => 'USD',
-    1 => 'EUR',
-    2 => 'XAF'
+    0 => 'USD'
   ],
-  'defaultCurrency' => 'XAF',
-  'baseCurrency' => 'XAF',
-  'currencyRates' => [
-    'USD' => 650,
-    'EUR' => 650
-  ],
+  'defaultCurrency' => 'USD',
+  'baseCurrency' => 'USD',
+  'currencyRates' => [],
   'outboundEmailIsShared' => true,
-  'outboundEmailFromName' => 'Gestimmo',
-  'outboundEmailFromAddress' => 'gestimmosenegal@gmail.com',
+  'outboundEmailFromName' => 'EspoCRM',
+  'outboundEmailFromAddress' => '',
   'smtpServer' => '',
   'smtpPort' => 587,
-  'smtpAuth' => false,
+  'smtpAuth' => true,
   'smtpSecurity' => 'TLS',
   'smtpUsername' => '',
   'smtpPassword' => '',
   'language' => 'fr_FR',
   'authenticationMethod' => 'Espo',
   'globalSearchEntityList' => [
-    0 => 'RealEstateProperty',
-    1 => 'RealEstateRequest',
-    2 => 'Account',
-    3 => 'Contact',
-    4 => 'Lead',
-    5 => 'Opportunity'
+    0 => 'Account',
+    1 => 'Contact',
+    2 => 'Lead',
+    3 => 'Opportunity'
   ],
   'tabList' => [
-    0 => 'RealEstateProperty',
-    1 => 'RealEstateRequest',
-    2 => 'Account',
-    3 => 'Contact',
-    4 => 'Lead',
-    5 => 'Opportunity',
-    6 => 'Case',
-    7 => 'Email',
-    8 => 'Calendar',
-    9 => 'Meeting',
-    10 => 'Call',
-    11 => 'Task',
-    12 => '_delimiter_',
-    13 => 'Document',
-    14 => 'Campaign',
-    15 => 'KnowledgeBaseArticle',
-    16 => 'Stream',
-    17 => 'User'
+    0 => 'Account',
+    1 => 'Contact',
+    2 => 'Lead',
+    3 => 'Opportunity',
+    4 => 'Case',
+    5 => 'Email',
+    6 => 'Calendar',
+    7 => 'Meeting',
+    8 => 'Call',
+    9 => 'Task',
+    10 => '_delimiter_',
+    11 => 'Document',
+    12 => 'Campaign',
+    13 => 'KnowledgeBaseArticle',
+    14 => 'Stream',
+    15 => 'User'
   ],
   'quickCreateList' => [
-    0 => 'RealEstateRequest',
-    1 => 'Account',
-    2 => 'Contact',
-    3 => 'Lead',
-    4 => 'Opportunity',
-    5 => 'Meeting',
-    6 => 'Call',
-    7 => 'Task',
-    8 => 'Case',
-    9 => 'Email'
+    0 => 'Account',
+    1 => 'Contact',
+    2 => 'Lead',
+    3 => 'Opportunity',
+    4 => 'Meeting',
+    5 => 'Call',
+    6 => 'Task',
+    7 => 'Case',
+    8 => 'Email'
   ],
   'exportDisabled' => false,
   'adminNotifications' => true,
@@ -138,36 +128,20 @@ return [
       'name' => 'My Espo',
       'layout' => [
         0 => (object) [
-          'id' => 'reStream',
+          'id' => 'default-activities',
+          'name' => 'Activities',
+          'x' => 2,
+          'y' => 2,
+          'width' => 2,
+          'height' => 4
+        ],
+        1 => (object) [
+          'id' => 'default-stream',
           'name' => 'Stream',
           'x' => 0,
           'y' => 0,
           'width' => 2,
-          'height' => 2
-        ],
-        1 => (object) [
-          'id' => 'reProperties',
-          'name' => 'Properties',
-          'x' => 2,
-          'y' => 2,
-          'width' => 2,
-          'height' => 2
-        ],
-        2 => (object) [
-          'id' => 'reRequests',
-          'name' => 'Requests',
-          'x' => 2,
-          'y' => 0,
-          'width' => 2,
-          'height' => 2
-        ],
-        3 => (object) [
-          'id' => 'reOpportunities',
-          'name' => 'Opportunities',
-          'x' => 0,
-          'y' => 2,
-          'width' => 2,
-          'height' => 2
+          'height' => 4
         ]
       ]
     ]
@@ -195,7 +169,7 @@ return [
   'cleanupJobPeriod' => '1 month',
   'cleanupActionHistoryPeriod' => '15 days',
   'cleanupAuthTokenPeriod' => '1 month',
-  'currencyFormat' => 3,
+  'currencyFormat' => 2,
   'currencyDecimalPlaces' => 2,
   'aclAllowDeleteCreated' => false,
   'aclAllowDeleteCreatedThresholdPeriod' => '24 hours',
@@ -235,36 +209,9 @@ return [
   'passwordGenerateLength' => 10,
   'massActionIdleCountThreshold' => 100,
   'exportIdleCountThreshold' => 1000,
-  'cacheTimestamp' => 1670693065,
-  'microtime' => 1670693065.814742,
-  'siteUrl' => 'http://localhost/EspoCRM',
+  'cacheTimestamp' => 1670705845,
+  'microtime' => 1670705845.768238,
+  'siteUrl' => 'http://localhost/gestimmo1',
   'fullTextSearchMinLength' => 4,
-  'appTimestamp' => 1670691321,
-  'maintenanceMode' => NULL,
-  'cronDisabled' => NULL,
-  'saleMarkup' => 5,
-  'rentMarkup' => 50,
-  'dashboardLayoutBeforeRealEstate' => [
-    0 => (object) [
-      'name' => 'My Espo',
-      'layout' => [
-        0 => (object) [
-          'id' => 'default-activities',
-          'name' => 'Activities',
-          'x' => 2,
-          'y' => 2,
-          'width' => 2,
-          'height' => 4
-        ],
-        1 => (object) [
-          'id' => 'default-stream',
-          'name' => 'Stream',
-          'x' => 0,
-          'y' => 0,
-          'width' => 2,
-          'height' => 4
-        ]
-      ]
-    ]
-  ]
+  'appTimestamp' => 1670704762
 ];

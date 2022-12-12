@@ -246,7 +246,7 @@ class ClientManager
         $data = [
             'applicationId' => 'espocrm-application-id',
             'apiUrl' => 'api/v1',
-            'applicationName' => $this->config->get('applicationName', 'GestImmo'),
+            'applicationName' => $this->config->get('applicationName', 'EspoCRM'),
             'cacheTimestamp' => $cacheTimestamp,
             'loaderCacheTimestamp' => $loaderCacheTimestamp,
             'stylesheet' => $this->themeManager->getStylesheet(),

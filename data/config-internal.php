@@ -2,12 +2,12 @@
 return [
   'database' => [
     'driver' => 'pdo_mysql',
-    'host' => 'localhost',
+    'host' => 'remotemysql.com',
     'port' => '',
     'charset' => 'utf8mb4',
-    'dbname' => 'gestimmodb1',
-    'user' => 'root',
-    'password' => ''
+    'dbname' => 'BnzOhX3Ggy',
+    'user' => 'BnzOhX3Ggy',
+    'password' => 'l3COEYktAC'
   ],
   'logger' => [
     'path' => 'data/logs/espo.log',
@@ -23,11 +23,9 @@ return [
   'clientCspScriptSourceList' => [
     0 => 'https://maps.googleapis.com'
   ],
-  'isInstalled' => true,
-  'microtimeInternal' => 1670690261.680661,
-  'passwordSalt' => 'e8c68b59ca126428',
-  'cryptKey' => '17422288f900bca250cd8b31ffa4a69e',
-  'hashSecretKey' => '0c4672a4aeacd0cb51b83dc9b40e22cb',
-  'actualDatabaseType' => 'mariadb',
-  'actualDatabaseVersion' => '10.4.24'
+  'isInstalled' => false,
+  'microtimeInternal' => 1670705831.755677,
+  'passwordSalt' => '2e69edbea112d6a6',
+  'cryptKey' => '7a06cbe486f2eb500c5a5d041ae5f894',
+  'hashSecretKey' => 'fcb1f59e48ab70e2cde671360fdb8971'
 ];

@@ -112,10 +112,7 @@ return [
       'Configuration Instructions' => 'Configuration Instructions',
       'Formula Sandbox' => 'Formula Sandbox',
       'is recommended' => 'is recommended',
-      'extension is missing' => 'extension is missing',
-      'Real Estate' => 'Real Estate',
-      'Locations' => 'Locations',
-      'Property Matching' => 'Property Matching'
+      'extension is missing' => 'extension is missing'
     ],
     'layouts' => [
       'list' => 'List',
@@ -142,9 +139,7 @@ return [
       'kanban' => 'Kanban',
       'detailConvert' => 'Convert Lead',
       'listForAccount' => 'List (for Account)',
-      'listForContact' => 'List (for Contact)',
-      'listForProperty' => 'List (for Property)',
-      'listForRequest' => 'List (for Request)'
+      'listForContact' => 'List (for Contact)'
     ],
     'fieldTypes' => [
       'address' => 'Address',
@@ -327,10 +322,7 @@ return [
       'jobsSettings' => 'Job processing settings. Jobs execute tasks in the background.',
       'sms' => 'SMS settings.',
       'pdfTemplates' => 'Templates for printing to PDF.',
-      'formulaSandbox' => 'Write and test formula scripts.',
-      'realEstateSettings' => 'Parameters for Real Estate extension.',
-      'realEstateLocations' => 'Manage Locations for Real Estate.',
-      'propertyMatching' => 'Matching configuration.'
+      'formulaSandbox' => 'Write and test formula scripts.'
     ],
     'keywords' => [
       'settings' => 'system',
@@ -1454,10 +1446,7 @@ Event - available in Calendar and Activities panel.',
       'Activities' => 'Activities',
       'KnowledgeBaseArticle' => 'Knowledge Base Article',
       'KnowledgeBaseCategory' => 'Knowledge Base Category',
-      'CampaignLogRecord' => 'Campaign Log Record',
-      'RealEstateProperty' => 'Property',
-      'RealEstateRequest' => 'Request',
-      'RealEstateLocation' => 'Location'
+      'CampaignLogRecord' => 'Campaign Log Record'
     ],
     'scopeNamesPlural' => [
       'Note' => 'Notes',
@@ -1524,10 +1513,7 @@ Event - available in Calendar and Activities panel.',
       'Activities' => 'Activities',
       'KnowledgeBaseArticle' => 'Knowledge Base',
       'KnowledgeBaseCategory' => 'Knowledge Base Categories',
-      'CampaignLogRecord' => 'Campaign Log Records',
-      'RealEstateProperty' => 'Properties',
-      'RealEstateRequest' => 'Requests',
-      'RealEstateLocation' => 'Locations'
+      'CampaignLogRecord' => 'Campaign Log Records'
     ],
     'labels' => [
       'Sort' => 'Sort',
@@ -1916,9 +1902,7 @@ Validation: `{type}`',
       'OpportunitiesByLeadSource' => 'Opportunities by Lead Source',
       'SalesByMonth' => 'Sales by Month',
       'SalesPipeline' => 'Sales Pipeline',
-      'Activities' => 'My Activities',
-      'Properties' => 'My Properties',
-      'Requests' => 'My Requests'
+      'Activities' => 'My Activities'
     ],
     'notificationMessages' => [
       'assign' => '{entityType} {entity} has been assigned to you',
@@ -3054,9 +3038,7 @@ no - can\'t view',
         'CheckNewVersion' => 'Check for New Version',
         'ProcessWebhookQueue' => 'Process Webhook Queue',
         'ProcessMassEmail' => 'Send Mass Emails',
-        'ControlKnowledgeBaseArticleStatus' => 'Control Knowledge Base Article Status',
-        'PropertyMatchingUpdate' => 'Property Matching Update',
-        'SendPropertyMatches' => 'Send Matched Properties to Requestors'
+        'ControlKnowledgeBaseArticleStatus' => 'Control Knowledge Base Article Status'
       ],
       'cronSetup' => [
         'linux' => 'Note: Add this line to the crontab file to run Espo Scheduled Jobs:',
@@ -3229,12 +3211,7 @@ no - can\'t view',
       'passwordStrengthBothCases' => 'Password must contain letters of both upper and lower case',
       'auth2FA' => 'Enable 2-Factor Authentication',
       'auth2FAForced' => 'Force regular users to set up 2FA',
-      'auth2FAMethodList' => 'Available 2FA methods',
-      'saleMarkup' => 'Default Markup for Sale (%)',
-      'rentMarkup' => 'Default Markup for Rent (%)',
-      'realEstateEmailSending' => 'Email requestors about matching properties',
-      'realEstatePropertyTemplate' => 'Email Template for Property',
-      'realEstateEmailSendingAssignedUserCc' => 'Add assigned user to CC'
+      'auth2FAMethodList' => 'Available 2FA methods'
     ],
     'options' => [
       'currencyFormat' => [
@@ -3695,8 +3672,7 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'campaignLogRecords' => 'Campaign Log',
       'campaign' => 'Campaign',
       'portalUsers' => 'Portal Users',
-      'originalLead' => 'Original Lead',
-      'properties' => 'Properties'
+      'originalLead' => 'Original Lead'
     ],
     'options' => [
       'type' => [
@@ -4084,9 +4060,7 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'acceptanceStatus' => 'Acceptance Status',
       'accountIsInactive' => 'Account Inactive',
       'acceptanceStatusMeetings' => 'Acceptance Status (Meetings)',
-      'acceptanceStatusCalls' => 'Acceptance Status (Calls)',
-      'properties' => 'Properties',
-      'propertyRole' => 'Role'
+      'acceptanceStatusCalls' => 'Acceptance Status (Calls)'
     ],
     'links' => [
       'opportunities' => 'Opportunities',
@@ -4101,10 +4075,7 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'opportunitiesPrimary' => 'Opportunities (Primary)',
       'portalUser' => 'Portal User',
       'originalLead' => 'Original Lead',
-      'documents' => 'Documents',
-      'properties' => 'Properties',
-      'requests' => 'Requests',
-      'requestsPrimary' => 'Requests (Primary)'
+      'documents' => 'Documents'
     ],
     'labels' => [
       'Create Contact' => 'Create Contact'
@@ -4115,12 +4086,6 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
         'Decision Maker' => 'Decision Maker',
         'Evaluator' => 'Evaluator',
         'Influencer' => 'Influencer'
-      ],
-      'propertyRole' => [
-        'Landlord' => 'Landlord',
-        'Tenant' => 'Tenant',
-        'Property Manager' => 'Property Manager',
-        'Requester' => 'Requester'
       ]
     ],
     'presetFilters' => [
@@ -4143,16 +4108,14 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'expirationDate' => 'Expiration Date',
       'description' => 'Description',
       'accounts' => 'Accounts',
-      'folder' => 'Folder',
-      'properties' => 'Properties'
+      'folder' => 'Folder'
     ],
     'links' => [
       'accounts' => 'Accounts',
       'opportunities' => 'Opportunities',
       'folder' => 'Folder',
       'leads' => 'Leads',
-      'contacts' => 'Contacts',
-      'properties' => 'Properties'
+      'contacts' => 'Contacts'
     ],
     'options' => [
       'status' => [
@@ -4476,18 +4439,14 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'originalLead' => 'Original Lead',
       'amountCurrency' => 'Amount Currency',
       'contactRole' => 'Contact Role',
-      'lastStage' => 'Last Stage',
-      'property' => 'Property',
-      'request' => 'Request'
+      'lastStage' => 'Last Stage'
     ],
     'links' => [
       'contacts' => 'Contacts',
       'contact' => 'Contact (Primary)',
       'documents' => 'Documents',
       'campaign' => 'Campaign',
-      'originalLead' => 'Original Lead',
-      'property' => 'Property',
-      'request' => 'Request'
+      'originalLead' => 'Original Lead'
     ],
     'options' => [
       'stage' => [
@@ -4503,11 +4462,6 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
         'Negotiation/Review' => 'Negotiation/Review',
         'Closed Won' => 'Closed Won',
         'Closed Lost' => 'Closed Lost'
-      ],
-      'contactRole' => [
-        'Landlord' => 'Landlord',
-        'Tenant' => 'Tenant',
-        'Property Manager' => 'Property Manager'
       ]
     ],
     'labels' => [
@@ -4613,178 +4567,6 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
     ],
     'nameOptions' => [
       'replyToEmail' => 'Reply to email'
-    ]
-  ],
-  'RealEstateLocation' => [
-    'labels' => [
-      'Create Location' => 'Create Location'
-    ],
-    'fields' => [
-      'address' => 'Address'
-    ],
-    'tooltips' => [
-      'address' => 'This address will be inserted into property address field once you specify this location. Keep not needed address fields empty.'
-    ]
-  ],
-  'RealEstateMatchingConfiguration' => [
-    'fields' => [
-      'fieldList' => 'Field list used for matching'
-    ],
-    'messages' => [
-      'typeFieldsMap' => 'Fields available for property types'
-    ]
-  ],
-  'RealEstateProperty' => [
-    'labels' => [
-      'Create RealEstateProperty' => 'Create Property',
-      'Matching Requests' => 'Matching Requests',
-      'Locations' => 'Locations'
-    ],
-    'fields' => [
-      'type' => 'Type',
-      'address' => 'Address',
-      'contacts' => 'Contacts',
-      'status' => 'Status',
-      'assignedUser' => 'Assigned User',
-      'images' => 'Images',
-      'sellers' => 'Sellers',
-      'square' => 'Square',
-      'yearBuilt' => 'Year Built',
-      'documents' => 'Documents',
-      'requestType' => 'Request Type',
-      'price' => 'Price',
-      'priceConverted' => 'Price (Converted)',
-      'bedroomCount' => 'Bedroom Count',
-      'bathroomCount' => 'Bathroom Count',
-      'floor' => 'Floor',
-      'floorCount' => 'Floor Count',
-      'location' => 'Location',
-      'matchingRequest' => 'Matching Request',
-      'number' => 'Number',
-      'account' => 'Account',
-      'addressMap' => 'Map',
-      'matchingRequestCount' => 'Matching Count',
-      'contactRole' => 'Role'
-    ],
-    'options' => [
-      'type' => [
-        'Apartment' => 'Apartment',
-        'Separate House' => 'Separate House',
-        'Office' => 'Office',
-        'Warehouse' => 'Warehouse',
-        'Retail' => 'Retail',
-        'Farm' => 'Farm',
-        'Room' => 'Room',
-        'Land Lot' => 'Land Lot'
-      ],
-      'status' => [
-        'New' => 'New',
-        'Assigned' => 'Assigned',
-        'In Process' => 'In Process',
-        'Completed' => 'Completed',
-        'Canceled' => 'Canceled',
-        'Lost' => 'Lost'
-      ],
-      'requestType' => [
-        'Rent' => 'Rent',
-        'Sale' => 'Sale'
-      ]
-    ],
-    'links' => [
-      'contacts' => 'Contacts',
-      'documents' => 'Documents',
-      'opportunities' => 'Opportunities',
-      'location' => 'Location',
-      'account' => 'Account',
-      'matchingRequests' => 'Matching Requests'
-    ],
-    'presetFilters' => [
-      'completed' => 'Completed',
-      'actual' => 'Actual',
-      'actualRent' => 'Rent Actual',
-      'actualSale' => 'Sale Actual'
-    ]
-  ],
-  'RealEstateRequest' => [
-    'labels' => [
-      'Create RealEstateRequest' => 'Create Request',
-      'Matching Properties' => 'Matching Properties',
-      'Create Opportunity' => 'Create Opportunity',
-      'Not Interested' => 'Not Interested',
-      'Unset Not Interested' => 'Unset Not Interested',
-      'Locations' => 'Locations',
-      'Min' => 'Min',
-      'Max' => 'Max'
-    ],
-    'fields' => [
-      'status' => 'Status',
-      'assignedUser' => 'Assigned User',
-      'type' => 'Type',
-      'propertyType' => 'Property Type',
-      'number' => 'Number',
-      'contact' => 'Contact',
-      'contacts' => 'Contacts',
-      'fromPrice' => 'Min Price',
-      'toPrice' => 'Max Price',
-      'fromSquare' => 'Min Square',
-      'toSquare' => 'Max Square',
-      'fromBedroomCount' => 'Min Bedroom Count',
-      'toBedroomCount' => 'Max Bedroom Count',
-      'fromBathroomCount' => 'Min Bathroom Count',
-      'toBathroomCount' => 'Max Bathroom Count',
-      'fromFloor' => 'Min Floor',
-      'toFloor' => 'Max Floor',
-      'fromFloorCount' => 'Min Floor Count',
-      'toFloorCount' => 'Max Floor Count',
-      'fromPriceConverted' => 'Min Price (Converted)',
-      'toPriceConverted' => 'Max Price (Converted)',
-      'price' => 'Price',
-      'bedroomCount' => 'Bedroom Count',
-      'bathroomCount' => 'Bathroom Count',
-      'floor' => 'Floor',
-      'floorCount' => 'Floor Count',
-      'square' => 'Square',
-      'locations' => 'Locations',
-      'matchingProperty' => 'Matching Property',
-      'yearBuilt' => 'Year Built',
-      'fromYearBuilt' => 'Min Year Built',
-      'toYearBuilt' => 'Max Year Built',
-      'matchingPropertyCount' => 'Matching Count'
-    ],
-    'links' => [
-      'contact' => 'Contact',
-      'contacts' => 'Contacts',
-      'opportunities' => 'Opportunities',
-      'locations' => 'Locations',
-      'matchingProperties' => 'Matching Properties'
-    ],
-    'options' => [
-      'status' => [
-        'New' => 'New',
-        'Assigned' => 'Assigned',
-        'In Process' => 'In Process',
-        'Completed' => 'Completed',
-        'Canceled' => 'Canceled',
-        'Lost' => 'Lost'
-      ],
-      'type' => [
-        'Rent' => 'Rent',
-        'Sale' => 'Sale'
-      ],
-      'propertyType' => [
-        'Apartment' => 'Apartment',
-        'Separate House' => 'Separate House',
-        'Office' => 'Office',
-        'Warehouse' => 'Warehouse',
-        'Retail' => 'Retail',
-        'Farm' => 'Farm'
-      ]
-    ],
-    'presetFilters' => [
-      'completed' => 'Completed',
-      'actual' => 'Actual',
-      'actualRent' => 'Rent Actual',
-      'actualSale' => 'Sale Actual'
     ]
   ]
 ];
